@@ -1,1 +1,4 @@
 /.vs/AIE_PIRATE_PROJECT/v15
+*.cache
+.vs/AIE_PIRATE_PROJECT/v15/Server/sqlite3/storage.ide-wal
+.vs/AIE_PIRATE_PROJECT/v15/Server/sqlite3/storage.ide-shm
