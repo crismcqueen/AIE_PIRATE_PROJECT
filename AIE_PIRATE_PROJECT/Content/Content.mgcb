@@ -13,19 +13,7 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin HYPERSPACE.otf
-/importer:
-/processor:
-/build:HYPERSPACE.otf
-
-#begin HYPERSPACE.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:HYPERSPACE.spritefont
-
-#begin loseGame.png
+#begin pirateShip.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -35,7 +23,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:loseGame.png
+/build:pirateShip.png
 
 #begin oceanTile.png
 /importer:TextureImporter
@@ -49,7 +37,7 @@
 /processorParam:TextureFormat=Color
 /build:oceanTile.png
 
-#begin pirateShip.png
+#begin beachBG.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -59,9 +47,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:pirateShip.png
+/build:beachBG.png
 
-#begin shipWreck.png
+#begin winPirate.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -71,7 +59,19 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:shipWreck.png
+/build:winPirate.png
+
+#begin loseGame.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:loseGame.png
 
 #begin enemyShip.png
 /importer:TextureImporter
@@ -85,6 +85,18 @@
 /processorParam:TextureFormat=Color
 /build:enemyShip.png
 
+#begin shipWreck.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:shipWreck.png
+
 #begin cannonBall.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -97,15 +109,10 @@
 /processorParam:TextureFormat=Color
 /build:cannonBall.png
 
-#begin beachBG.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
+#begin HYPERSPACE.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:beachBG.png
+/processorParam:TextureFormat=Compressed
+/build:HYPERSPACE.spritefont
 

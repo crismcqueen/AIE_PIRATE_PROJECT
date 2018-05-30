@@ -20,6 +20,7 @@ namespace AIE_PIRATE_PROJECT
         private Vector2 playerOffset = new Vector2(0, 0);
         private Vector2 playerOffset2 = new Vector2(0, 0);
         private float playerSpeed = 150.0f;
+        private float playerStop = 0;
         private float playerWind = 25.0f;
         private float playerDrift = 20.0f;
         private float playerTurnSpeed = 1;
@@ -75,7 +76,6 @@ namespace AIE_PIRATE_PROJECT
         //private int state;
 
         public Game1()
-        
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -285,7 +285,7 @@ namespace AIE_PIRATE_PROJECT
             }
             if (state.IsKeyDown(Keys.Down) == true)
             {
-                ySpeed -= playerSpeed * deltaTime;
+                ySpeed -= playerStop ;
             }
             if (state.IsKeyDown(Keys.Left) == true)
             {
@@ -519,7 +519,7 @@ namespace AIE_PIRATE_PROJECT
             }
 
             //draw fonts
-            spriteBatch.DrawString(text, "SCORE " + score, new Vector2(30, 0), Color.Black, 2, new Vector2(0, 0), 1 * 1.5f, SpriteEffects.None, 0);
+            spriteBatch.DrawString(text, "SCORE " + score, new Vector2(30, 0), Color.Black, 0, new Vector2(0, 0), 1 * 1.5f, SpriteEffects.None, 0);
             spriteBatch.DrawString(text, "FPS " + currentFPS, new Vector2(570, 0), Color.Black, 0, new Vector2(0, 0), 1 * 1.5f, SpriteEffects.None, 0);
 
 
