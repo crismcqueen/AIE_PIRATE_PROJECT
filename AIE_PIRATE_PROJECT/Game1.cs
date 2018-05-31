@@ -285,8 +285,10 @@ namespace AIE_PIRATE_PROJECT
             }
             if (state.IsKeyDown(Keys.Down) == true)
             {
-                ySpeed -= playerStop ;
+                ySpeed -= playerWind * deltaTime;
+                
             }
+            
             if (state.IsKeyDown(Keys.Left) == true)
             {
                 playerRotation -= playerTurnSpeed * deltaTime;
