@@ -2,3 +2,7 @@
 *.cache
 .vs/AIE_PIRATE_PROJECT/v15/Server/sqlite3/storage.ide-wal
 .vs/AIE_PIRATE_PROJECT/v15/Server/sqlite3/storage.ide-shm
+.vs/AIE_PIRATE_PROJECT/DesignTimeBuild/.dtbcache
+.vs/AIE_PIRATE_PROJECT/v15/Server/sqlite3/storage.ide-shm
+.vs/AIE_PIRATE_PROJECT/v15/Server/sqlite3/storage.ide-shm
+.vs/AIE_PIRATE_PROJECT/v15/Server/sqlite3/storage.ide-wal
