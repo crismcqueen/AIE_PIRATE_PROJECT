@@ -14,20 +14,21 @@ namespace AIE_PIRATE_PROJECT
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        //player data
+        public int ScreenWidth
+        {
+            get
+            {
+                return graphics.GraphicsDevice.Viewport.Width;
+            }
+        }
 
-        private Texture2D shipTexture;
-        private Vector2 playerPosition = new Vector2(0, 0);
-        private Vector2 playerOffset = new Vector2(0, 0);
-        private Vector2 playerOffset2 = new Vector2(0, 0);
-        private float playerSpeed = 150.0f;
-        private float playerStop = 0;
-        private float playerWind = 25.0f;
-        private float playerDrift = 20.0f;
-        private float playerTurnSpeed = 1;
-        private float playerRotation = 20;
-        private float playerRadius = 20;
-        private bool playerAlive = true;
+        public int ScreenHeight
+        {
+            get
+            {
+                return graphics.GraphicsDevice.Viewport.Height;
+            }
+        }
 
         //enemy data
 
@@ -105,9 +106,6 @@ namespace AIE_PIRATE_PROJECT
             screenHeight = graphics.GraphicsDevice.Viewport.Height;
             screenWidth = graphics.GraphicsDevice.Viewport.Width;
 
-            playerPosition = new Vector2(screenWidth / 2, screenHeight / 2);
-
-
             //for (int i = 0; i < numberOfEnemy; i++)
 
             enemyPosition[0] = new Vector2(80, screenHeight / 2.0F);
@@ -126,8 +124,6 @@ namespace AIE_PIRATE_PROJECT
             enemyRotation[3] = 3.3f;
             enemyAlive[3] = true;
             bulletAlive = true;
-            playerRotation = 0;
-            playerAlive = true;
             score = 0;
         }
         /// <summary>
@@ -140,7 +136,6 @@ namespace AIE_PIRATE_PROJECT
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            shipTexture = Content.Load<Texture2D>("pirateShip");
             oceanTile = Content.Load<Texture2D>("oceanTile");
             beachBG = Content.Load<Texture2D>("beachBG");
             winPirateBG = Content.Load<Texture2D>("winPirate");
@@ -151,7 +146,6 @@ namespace AIE_PIRATE_PROJECT
             shipWreck = Content.Load<Texture2D>("shipWreck");
 
 
-            playerOffset = new Vector2(shipTexture.Width / 2, shipTexture.Height / 2);
             bulletOffset = new Vector2(bulletTexture.Width / 2, bulletTexture.Height / 2);
             for (int i = 0; i < numberOfEnemy; i++)
             {
@@ -269,76 +263,17 @@ namespace AIE_PIRATE_PROJECT
 
         private void UpdatePlayer(float deltaTime)
         {
+            /*
             if (playerAlive == false)
                 return;
             KeyboardState state = Keyboard.GetState();
 
-            float xSpeed = 0;
-            float ySpeed = 0;
-
-            if (state.IsKeyDown(Keys.Up) == true)
-            {
-                ySpeed += playerSpeed * deltaTime;
-            }
-            else if (state.IsKeyDown(Keys.Up) == false)
-            {
-                ySpeed += playerWind * deltaTime;
-            }
-            if (state.IsKeyDown(Keys.Down) == true)
-            {
-                ySpeed -= playerWind * deltaTime;
-                
-            }
-            
-            if (state.IsKeyDown(Keys.Left) == true)
-            {
-                playerRotation -= playerTurnSpeed * deltaTime;
-            }
-            if (state.IsKeyDown(Keys.Right) == true)
-            {
-                playerRotation += playerTurnSpeed * deltaTime;
-            }
-            if (state.IsKeyDown(Keys.A) == true)
-            {
-                xSpeed += playerDrift * deltaTime;
-            }
-            if (state.IsKeyDown(Keys.D) == true)
-            {
-                xSpeed -= playerDrift * deltaTime;
-            }
-            double x = (xSpeed * Math.Cos(playerRotation)) - (ySpeed * Math.Sin(playerRotation));
-            double y = (xSpeed * Math.Sin(playerRotation)) + (ySpeed * Math.Cos(playerRotation));
-
-            // calculate the player's new position
-            playerPosition.X += (float)x;
-            playerPosition.Y += (float)y;
-
-            //check if the player went off the screen
-
-
-            if (playerPosition.X < -playerOffset.Y)
-            {
-                playerPosition.X = screenWidth - playerOffset.Y;
-            }
-            if (playerPosition.X > screenWidth + playerOffset.Y)
-            {
-                playerPosition.X = playerOffset.Y;
-            }
-            if (playerPosition.Y < -playerOffset.Y)
-            {
-                playerPosition.Y = screenHeight - playerOffset.Y;
-            }
-            if (playerPosition.Y > screenHeight + playerOffset.Y)
-            {
-                playerPosition.Y = playerOffset.Y;
-            }
-            Vector2 playerDirection = new Vector2(-(float)Math.Sin(playerRotation), (float)Math.Cos(playerRotation));
-            playerDirection.Normalize();
             // shoot a bullet 
             if (state.IsKeyDown(Keys.Space) == true)
             {
                 ShootBullet(playerPosition, playerRotation);
             }
+            */
         }
 
 
@@ -409,7 +344,7 @@ namespace AIE_PIRATE_PROJECT
         }
         private void UpdateGameState(float deltaTime)
         {
-
+            /*
             UpdatePlayer(deltaTime);
             UpdateEnemies(deltaTime);
             UpdateEnemyCollisions();
@@ -458,7 +393,7 @@ namespace AIE_PIRATE_PROJECT
             if (aliveCount == 0)
             {
                 gameState = STATE_GAMEOVERWIN;
-            }
+            }*/
         }
 
         private void DrawGameState(SpriteBatch spriteBatch)
@@ -473,34 +408,6 @@ namespace AIE_PIRATE_PROJECT
                     Vector2 position = new Vector2(column * oceanTile.Width, row * oceanTile.Height);
                     spriteBatch.Draw(oceanTile, position, Color.White);
                 }
-            }
-
-            // draw player 
-            if (playerAlive == true)
-            {
-                spriteBatch.Draw(shipTexture, playerPosition, null, Color.White, playerRotation, playerOffset, 0.5f, SpriteEffects.None, 0);
-            }
-            // draw player warpscreen
-            if (playerPosition.X < playerOffset.X)
-
-            {
-                Vector2 wrapPos = new Vector2(screenWidth + playerPosition.X, playerPosition.Y);
-                spriteBatch.Draw(shipTexture, wrapPos, null, Color.White, playerRotation, playerOffset, 0.5f, SpriteEffects.None, 0);
-            }
-            if (playerPosition.Y < playerOffset.Y)
-            {
-                Vector2 wrapPos = new Vector2(playerPosition.X, screenHeight + playerPosition.Y);
-                spriteBatch.Draw(shipTexture, wrapPos, null, Color.White, playerRotation, playerOffset, 0.5f, SpriteEffects.None, 0);
-            }
-            if (playerPosition.X > screenWidth - playerOffset.Y)
-            {
-                Vector2 wrapPos = new Vector2(-(screenWidth - playerPosition.X), playerPosition.Y);
-                spriteBatch.Draw(shipTexture, wrapPos, null, Color.White, playerRotation, playerOffset, 0.5f, SpriteEffects.None, 0);
-            }
-            if (playerPosition.Y > screenHeight - playerOffset.Y)
-            {
-                Vector2 wrapPos = new Vector2(playerPosition.X, -(screenHeight - playerPosition.Y));
-                spriteBatch.Draw(shipTexture, wrapPos, null, Color.White, playerRotation, playerOffset, 0.5f, SpriteEffects.None, 0);
             }
 
             if (bulletAlive == false)
