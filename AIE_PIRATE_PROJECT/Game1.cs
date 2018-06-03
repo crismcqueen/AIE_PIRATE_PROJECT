@@ -13,7 +13,9 @@ namespace AIE_PIRATE_PROJECT
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-
+        // resent cam line
+        Sprite player = null;
+        Camera camera;
         public int ScreenWidth
         {
             get
@@ -98,6 +100,9 @@ namespace AIE_PIRATE_PROJECT
 
         {
             ResetGame();
+            // resent cam line
+            
+            camera = new Camera(GraphicsDevice.Viewport);
             base.Initialize();
         }
 
@@ -255,8 +260,8 @@ namespace AIE_PIRATE_PROJECT
                     break;
 
             }
-
-
+            // resent cam line
+            //camera.Update(gameTime,player.Load);
             base.Update(gameTime);
         }
 

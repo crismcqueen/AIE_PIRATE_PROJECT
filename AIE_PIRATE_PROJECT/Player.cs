@@ -17,7 +17,8 @@ namespace AIE_PIRATE_PROJECT
         bool isAlive = true;
 
         //pos
-        Vector2 position;
+        public Vector2 position;
+        public Vector2 box; 
         float rotation;
 
         //pos'
