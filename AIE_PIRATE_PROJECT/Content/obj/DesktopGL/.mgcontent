@@ -4,14 +4,13 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/pirateShip.png</File>
-    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/oceanTile.png</File>
-    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/beachBG.png</File>
-    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/winPirate.png</File>
-    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/loseGame.png</File>
-    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/enemyShip.png</File>
-    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/shipWreck.png</File>
-    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/cannonBall.png</File>
-    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/HYPERSPACE.spritefont</File>
+    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/pirateShip.png</File>
+    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/oceanTile.png</File>
+    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/beachBG.png</File>
+    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/winPirate.png</File>
+    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/loseGame.png</File>
+    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/enemyShip.png</File>
+    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/shipWreck.png</File>
+    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/cannonBall.png</File>
   </SourceFiles>
 </SourceFileCollection>

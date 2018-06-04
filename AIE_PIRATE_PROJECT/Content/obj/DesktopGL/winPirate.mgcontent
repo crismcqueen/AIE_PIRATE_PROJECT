@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/winPirate.png</SourceFile>
-  <SourceTime>2018-03-21T21:10:57.2376957+11:00</SourceTime>
-  <DestFile>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/bin/DesktopGL/winPirate.xnb</DestFile>
-  <DestTime>2018-05-31T19:26:41.5084133+10:00</DestTime>
+  <SourceFile>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/winPirate.png</SourceFile>
+  <SourceTime>2018-05-30T20:59:32.0131135+10:00</SourceTime>
+  <DestFile>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/bin/DesktopGL/winPirate.xnb</DestFile>
+  <DestTime>2018-06-04T10:00:23.1435452+10:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-02T02:05:36+11:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
