@@ -15,9 +15,11 @@ namespace AIE_PIRATE_PROJECT
         Sprite sprite;
 
         bool isAlive = true;
-
+        // temp. just trying to get camera to work this way if fail will put in game1
+        public Vector2 position;
+        public Vector2 box;
         //pos
-        Vector2 position;
+       
         float rotation;
 
         //pos'
