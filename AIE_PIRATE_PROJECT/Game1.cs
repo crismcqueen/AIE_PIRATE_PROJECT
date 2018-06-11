@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGame.Extended;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Graphics;
 using MonoGame.Utilities;
@@ -25,6 +26,7 @@ namespace AIE_PIRATE_PROJECT
         Texture2D cannonballSprite;
         TiledMapRenderer mapRenderer;
         TiledMap seaMap;
+        Camera2D cam;
         SpriteFont gameText;
 
         Player player = new Player();
@@ -41,6 +43,7 @@ namespace AIE_PIRATE_PROJECT
         protected override void Initialize()
         {
             mapRenderer = new TiledMapRenderer(GraphicsDevice);
+            cam = new Camera2D(GraphicsDevice);
             //graphics.IsFullScreen = true;
             //graphics.ApplyChanges();
             base.Initialize();
@@ -69,9 +72,9 @@ namespace AIE_PIRATE_PROJECT
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
+            
             player.Update(gameTime);
-
+            cam.LookAt(player.Position);
             base.Update(gameTime);
         }
 
@@ -79,9 +82,11 @@ namespace AIE_PIRATE_PROJECT
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            mapRenderer.Draw(seaMap);
+            mapRenderer.Draw(seaMap, cam.GetViewMatrix());
+            
+
+            spriteBatch.Begin(transformMatrix: cam.GetViewMatrix());
             player.playerOffset = new Vector2(playerSprite.Width / 2, playerSprite.Height / 2);
-            spriteBatch.Begin();
             //spriteBatch.Draw(splashScreen, new Vector2(0, 0), Color.Silver);
             //spriteBatch.DrawString(text, "SCORE " + score, new Vector2(30, 0), Color.Black, 2, new Vector2(0, 0), 1 * 1.5f, SpriteEffects.None, 0);
             //spriteBatch.DrawString(gameText, "test press escape to exit", new Vector2(100, 100), Color.DarkRed, 0, new Vector2(0, 0), 1 * 3, SpriteEffects.None, 0);
