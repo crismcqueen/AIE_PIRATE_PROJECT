@@ -28,7 +28,9 @@ namespace AIE_PIRATE_PROJECT
         TiledMap seaMap;
         Camera2D cam;
         SpriteFont gameText;
-
+        int score = 0;
+        int lives = 3;
+        
         Player player = new Player();
         public Game1()
         {
@@ -60,8 +62,9 @@ namespace AIE_PIRATE_PROJECT
             cannonballSprite = Content.Load<Texture2D>("Misc/cannonBall");
             health = Content.Load<Texture2D>("Misc/SkullHealth");
             //splashScreen = Content.Load<Texture2D>("Screens/Splash");
-            //gameText = Content.Load<SpriteFont>("Text/Primitive");
+            gameText = Content.Load<SpriteFont>("Fonts/Primitive");
             seaMap = Content.Load<TiledMap>("Misc/pirateSeaMap");
+            health = Content.Load<Texture2D>("GUI/SkullHealth");
         }
 
 
@@ -88,10 +91,18 @@ namespace AIE_PIRATE_PROJECT
             spriteBatch.Begin(transformMatrix: cam.GetViewMatrix());
             player.playerOffset = new Vector2(playerSprite.Width / 2, playerSprite.Height / 2);
             //spriteBatch.Draw(splashScreen, new Vector2(0, 0), Color.Silver);
-            //spriteBatch.DrawString(text, "SCORE " + score, new Vector2(30, 0), Color.Black, 2, new Vector2(0, 0), 1 * 1.5f, SpriteEffects.None, 0);
-            //spriteBatch.DrawString(gameText, "test press escape to exit", new Vector2(100, 100), Color.DarkRed, 0, new Vector2(0, 0), 1 * 3, SpriteEffects.None, 0);
+            
+            spriteBatch.DrawString(gameText, "test press escape to exit", new Vector2(100, 100), Color.DarkRed, 0, new Vector2(0, 0), 1 * 3, SpriteEffects.None, 0);
+            
             //spriteBatch.Draw(playerSprite, player.Position, Color.White);
-            spriteBatch.Draw(playerSprite, player.Position, null, Color.White, player.playerRotation, player.playerOffset, 1, SpriteEffects.None, 0);
+            spriteBatch.Draw(playerSprite, player.Position, null, Color.White, player.playerRotation, player.playerOffset, 0.5f, SpriteEffects.None, 0);
+            spriteBatch.End();
+            spriteBatch.Begin();
+            spriteBatch.DrawString(gameText, "SCORE " + score, new Vector2(30, 30), Color.Black, 0, new Vector2(0, 0), 1 * 1.5f, SpriteEffects.None, 0);
+            for (int i = 0; i < lives; i++)
+            {
+                spriteBatch.Draw(health, new Vector2(1280 - 80 - i * 64, 16), Color.White);
+            }
             spriteBatch.End();
             base.Draw(gameTime);
         }
