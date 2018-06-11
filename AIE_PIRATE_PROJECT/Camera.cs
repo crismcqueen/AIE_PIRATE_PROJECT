@@ -22,7 +22,7 @@ namespace AIE_PIRATE_PROJECT
 
         public void Update(GameTime gameTime,Player player)
         {
-            centre = new Vector2(player.position.X + (player.box.Y / 2) - 400, player.position.Y + (player.box.X / 2 - 250));
+            centre = new Vector2(player.playerPosition.X + (player.playerOffset.Y / 2) - 400, player.playerPosition.Y + (player.playerOffset.X / 2 - 250));
             transform = Matrix.CreateScale(new Vector3(1, 1, 0)) * Matrix.CreateTranslation(new Vector3(-centre.X, -centre.Y, 0));
         }
 
