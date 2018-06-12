@@ -15,7 +15,7 @@ namespace AIE_PIRATE_PROJECT
     {
         private Vector2 position = new Vector2(100, 100);
         private int health = 3;
-        public Vector2 playerPosition = new Vector2(0, 0);
+        //private Vector2 playerPosition = new Vector2(0, 0);
         public Vector2 playerOffset = new Vector2(0, 0);
         //private Vector2 playerOffset2 = new Vector2(0, 0);
         private float playerSpeed = 150.0f;

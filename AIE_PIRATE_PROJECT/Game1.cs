@@ -98,10 +98,10 @@ namespace AIE_PIRATE_PROJECT
             spriteBatch.Draw(playerSprite, player.Position, null, Color.White, player.playerRotation, player.playerOffset, 0.5f, SpriteEffects.None, 0);
             spriteBatch.End();
             spriteBatch.Begin();
-            spriteBatch.DrawString(gameText, "SCORE " + score, new Vector2(30, 30), Color.Black, 0, new Vector2(0, 0), 1 * 1.5f, SpriteEffects.None, 0);
+            spriteBatch.DrawString(gameText, "SCORE " + score, new Vector2(10, 5), Color.Black, 0, new Vector2(0, 0), 1 * 1.5f, SpriteEffects.None, 0);
             for (int i = 0; i < lives; i++)
             {
-                spriteBatch.Draw(health, new Vector2(1280 - 80 - i * 64, 16), Color.White);
+                spriteBatch.Draw(health, new Vector2(1320- 80 - i * 32, 10), Color.White);
             }
             spriteBatch.End();
             base.Draw(gameTime);
