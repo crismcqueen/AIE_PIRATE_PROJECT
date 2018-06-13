@@ -39,6 +39,9 @@ namespace AIE_PIRATE_PROJECT
             //Screen res
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
+            //screenY = graphics.GraphicsDevice.Viewport.Height;
+            //screenX = graphics.GraphicsDevice.Viewport.Width;
+
         }
 
 
