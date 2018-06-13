@@ -84,7 +84,7 @@ namespace AIE_PIRATE_PROJECT
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Transparent);
             mapRenderer.Draw(seaMap, cam.GetViewMatrix());
             
 
