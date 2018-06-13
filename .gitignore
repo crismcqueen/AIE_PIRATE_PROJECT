@@ -10,3 +10,8 @@
 .vs/AIE_PIRATE_PROJECT/v15/Server/sqlite3/storage.ide
 *.ide
 *.mgcontent
+bin/
+obj/
+.vs/
+x84/
+x64/
