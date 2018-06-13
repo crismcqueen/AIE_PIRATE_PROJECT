@@ -92,7 +92,7 @@ namespace AIE_PIRATE_PROJECT
             GraphicsDevice.Clear(Color.CornflowerBlue);
             mapRenderer.Draw(seaMap, cam.GetViewMatrix());
             
-
+            // world space here
             spriteBatch.Begin(transformMatrix: cam.GetViewMatrix());
             player.playerOffset = new Vector2(playerSprite.Width / 2, playerSprite.Height / 2);
             //spriteBatch.Draw(splashScreen, new Vector2(0, 0), Color.Silver);
