@@ -19,6 +19,11 @@ namespace AIE_PIRATE_PROJECT
         Vector2 enemyOffset = new Vector2(0, 0);
         Vector2 enemyPosition = new Vector2(200, 100);
 
+       /* public Transform Player;
+        int maxDistance = 10;
+        int minDistance = 5; 
+        */
+
         float enemySpeed = 100;
         float enemyRadius = 60;
         float enemyRotations = 4.5f;
@@ -45,9 +50,22 @@ namespace AIE_PIRATE_PROJECT
 
         public void Update(float deltaTime)
         {
+            /* transform.LookAt(Player);
 
+            if (Vector3.Distance(transform.position, Player.position) >= MinDist)
+            {
+                transform.position += transform.forward * enemySpeed * Time.deltaTime;
 
+                if (Vector3.Distance(transform.position, Player.position) <= MaxDist)
+                {
+                    //shoot at player
+                }
+
+            } */
+            
         }
+
+        
 
         /*public void Draw(SpriteBatch spriteBatch)
         {
