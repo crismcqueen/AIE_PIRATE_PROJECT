@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/GUI/SkullHealth.png</SourceFile>
-  <SourceTime>2018-06-13T18:55:52.5696121+10:00</SourceTime>
-  <DestFile>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/bin/DesktopGL/GUI/SkullHealth.xnb</DestFile>
-  <DestTime>2018-06-13T19:15:22.9576227+10:00</DestTime>
+  <SourceFile>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/GUI/SkullHealth.png</SourceFile>
+  <SourceTime>2018-06-13T17:05:21.5238224+10:00</SourceTime>
+  <DestFile>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/bin/DesktopGL/GUI/SkullHealth.xnb</DestFile>
+  <DestTime>2018-06-13T20:13:50.8756895+10:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-02T02:05:36+11:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
