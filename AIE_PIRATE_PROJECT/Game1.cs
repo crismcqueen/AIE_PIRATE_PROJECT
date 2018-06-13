@@ -30,7 +30,9 @@ namespace AIE_PIRATE_PROJECT
         SpriteFont gameText;
         int score = 0;
         int lives = 3;
+
         
+
         Player player = new Player();
         public Game1()
         {
