@@ -128,8 +128,6 @@
     <None Include="Content\Misc\explosion1.xnb" />
     <None Include="Content\Misc\explosion2.xnb" />
     <None Include="Content\Misc\explosion3.xnb" />
-    <None Include="Content\Misc\pirateSeaMap.xnb" />
-    <None Include="Content\Misc\tiles_sheet.xnb" />
     <None Include="Content\Player\PHS-2.xnb" />
     <None Include="Content\Player\PHS-3.xnb" />
     <None Include="Content\Player\PSH.xnb" />
