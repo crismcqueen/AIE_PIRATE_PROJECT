@@ -34,6 +34,10 @@ namespace AIE_PIRATE_PROJECT
             {
                 return position;
             }
+            set
+            {
+                position = value;
+            }
         }
         public int Health
         {
