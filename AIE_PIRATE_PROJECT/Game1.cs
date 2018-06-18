@@ -42,6 +42,7 @@ namespace AIE_PIRATE_PROJECT
             //Screen res
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
+            graphics.PreferMultiSampling = true;
             //screenY = graphics.GraphicsDevice.Viewport.Height;
             //screenX = graphics.GraphicsDevice.Viewport.Width;
 
@@ -96,15 +97,18 @@ namespace AIE_PIRATE_PROJECT
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.BlendState = BlendState.NonPremultiplied;
+
             mapRenderer.Draw(seaMap, cam.GetViewMatrix());
-            
+
             // world space here
-            spriteBatch.Begin(transformMatrix: cam.GetViewMatrix());
+            spriteBatch.Begin(transformMatrix: cam.GetViewMatrix(), samplerState: SamplerState.PointClamp);
+
             player.playerOffset = new Vector2(playerSprite.Width / 2, playerSprite.Height / 2);
             //spriteBatch.Draw(splashScreen, new Vector2(0, 0), Color.Silver);
-            
+
             spriteBatch.DrawString(gameText, "test press escape to exit", new Vector2(100, 100), Color.DarkRed, 0, new Vector2(0, 0), 1 * 3, SpriteEffects.None, 0);
-            
+
             //spriteBatch.Draw(playerSprite, player.Position, Color.White);
             spriteBatch.Draw(playerSprite, player.Position, null, Color.White, player.playerRotation, player.playerOffset, 0.5f, SpriteEffects.None, 0);
             spriteBatch.End();
@@ -128,6 +132,7 @@ namespace AIE_PIRATE_PROJECT
                 spriteBatch.Draw(health, new Vector2(1280 - 80 - i * 64, 16), Color.White);
             }
             spriteBatch.End();
+            spriteBatch.GraphicsDevice.SamplerStates[0] = SamplerState.PointClamp;
             base.Draw(gameTime);
         }
     }
