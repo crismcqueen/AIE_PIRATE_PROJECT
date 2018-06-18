@@ -21,6 +21,7 @@ namespace AIE_PIRATE_PROJECT
 
         Texture2D playerSprite;
         Texture2D enemySprite;
+        Texture2D enemyBossSprite; 
         Texture2D health;
         Texture2D splashScreen;
         Texture2D cannonballSprite;
@@ -64,13 +65,18 @@ namespace AIE_PIRATE_PROJECT
             //Sprite content
             playerSprite = Content.Load<Texture2D>("Player/PSH");
             enemySprite = Content.Load<Texture2D>("Enemy/enemyShipAlive");
+            enemyBossSprite = Content.Load<Texture2D>("Enemy/enemyShipDead");
             cannonballSprite = Content.Load<Texture2D>("Misc/cannonBall");
             health = Content.Load<Texture2D>("Misc/SkullHealth");
             //splashScreen = Content.Load<Texture2D>("Screens/Splash");
             gameText = Content.Load<SpriteFont>("Fonts/Primitive");
             seaMap = Content.Load<TiledMap>("Misc/pirateSeaMap");
             health = Content.Load<Texture2D>("GUI/SkullHealth");
+
+            Enemy.enemies.Add(new enemyShip(new Vector2(100, 400)));
+            Enemy.enemies.Add(new enemyBoss(new Vector2(300, 450)));
         }
+
 
 
 
@@ -103,6 +109,19 @@ namespace AIE_PIRATE_PROJECT
             spriteBatch.Draw(playerSprite, player.Position, null, Color.White, player.playerRotation, player.playerOffset, 0.5f, SpriteEffects.None, 0);
             spriteBatch.End();
             spriteBatch.Begin();
+            foreach (Enemy e in Enemy.enemies)
+            {
+                Texture2D enemyDraw;
+                if (e.GetType() == typeof(enemyShip))
+                {
+                    enemyDraw = enemySprite;
+                }
+                else
+                {
+                    enemyDraw = enemyBossSprite;
+                }
+                spriteBatch.Draw(enemyDraw, e.Position, Color.White);
+            }
             spriteBatch.DrawString(gameText, "SCORE " + score, new Vector2(30, 30), Color.Black, 0, new Vector2(0, 0), 1 * 1.5f, SpriteEffects.None, 0);
             for (int i = 0; i < lives; i++)
             {
