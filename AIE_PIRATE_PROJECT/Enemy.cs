@@ -23,6 +23,11 @@ namespace AIE_PIRATE_PROJECT
 
         public static List<Enemy> enemies = new List<Enemy>();
 
+        public Transform2D player;
+        int maxDistance = 10;
+        int minDistance = 5;
+
+
         public Vector2 Position
         {
             get
@@ -53,7 +58,28 @@ namespace AIE_PIRATE_PROJECT
             position = newPos;
         }
 
-        
+        public void Load(ContentManager content)
+        {
+
+
+
+
+        }
+
+
+        public void Update(float deltaTime)
+        {
+
+
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+
+
+
+        }
+
 
     }
     class enemyShip : Enemy
