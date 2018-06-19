@@ -77,6 +77,16 @@ namespace AIE_PIRATE_PROJECT
 
         }
 
+        private void ChasePlayer()
+        {
+            foreach (Enemy e in enemies)
+            {
+
+
+            }
+
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
 
