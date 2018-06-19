@@ -16,27 +16,30 @@ namespace AIE_PIRATE_PROJECT
 {
     class Enemy
     {
-        private Vector2 position;
+       // Sprite sprite = new Sprite(); 
+        Game1 game = null;
+        private Vector2 enemyPosition;
+        
         protected int health;
         protected int speed;
         protected int radius;
 
         public static List<Enemy> enemies = new List<Enemy>();
 
-        public Transform2D player;
-        int maxDistance = 10;
-        int minDistance = 5;
+        //public Transform2D player;
+        //int maxDistance = 10;
+        //int minDistance = 5;
 
 
         public Vector2 Position
         {
             get
             {
-                return position;
+                return enemyPosition;
             }
             set
             {
-                position = value;
+                enemyPosition = value;
             }
         }
         public int Health
@@ -59,13 +62,11 @@ namespace AIE_PIRATE_PROJECT
         }
         public Enemy(Vector2 newPos)
         {
-            position = newPos;
+            enemyPosition = newPos;
         }
 
         public void Load(ContentManager content)
         {
-
-
 
 
         }
@@ -73,8 +74,13 @@ namespace AIE_PIRATE_PROJECT
 
         public void Update(float deltaTime)
         {
+           
 
+            Vector2 direction = Player.Position - enemyPosition;
 
+            Vector2 enemyVelocity = direction * speed * deltaTime;
+
+            enemyPosition += enemyVelocity;
         }
 
         private void ChasePlayer()
@@ -82,14 +88,21 @@ namespace AIE_PIRATE_PROJECT
             foreach (Enemy e in enemies)
             {
 
+                if (  )
+                {
+                    //fire cannon at player
+
+                }
+                
 
             }
 
-        }
+        } 
+
 
         public void Draw(SpriteBatch spriteBatch)
         {
-
+            
 
 
         }
