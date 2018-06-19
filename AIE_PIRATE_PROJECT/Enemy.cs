@@ -76,11 +76,11 @@ namespace AIE_PIRATE_PROJECT
         {
            
 
-            Vector2 direction = Player.Position - enemyPosition;
+           /* Vector2 direction = Player.Position - enemyPosition;
 
             Vector2 enemyVelocity = direction * speed * deltaTime;
 
-            enemyPosition += enemyVelocity;
+            enemyPosition += enemyVelocity; */
         }
 
         private void ChasePlayer()
@@ -88,11 +88,11 @@ namespace AIE_PIRATE_PROJECT
             foreach (Enemy e in enemies)
             {
 
-                if (  )
+               /* if (  )
                 {
                     //fire cannon at player
 
-                }
+                }*/
                 
 
             }
