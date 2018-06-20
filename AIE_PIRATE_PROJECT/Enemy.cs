@@ -21,7 +21,7 @@ namespace AIE_PIRATE_PROJECT
         private Vector2 enemyPosition;
         
         protected int health;
-        protected int speed;
+        protected int speed= 5;
         protected int radius;
 
         public static List<Enemy> enemies = new List<Enemy>();
@@ -72,15 +72,17 @@ namespace AIE_PIRATE_PROJECT
         }
 
 
-        public void Update(float deltaTime)
+        public void Update(GameTime gameTime, Vector2 playerPosition)
         {
-           
+            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            Vector2 direction = Player.Position - enemyPosition;
+            Vector2 direction = playerPosition - enemyPosition;
+            direction.Normalize();
+            Vector2 enemyVelocity = direction * speed * Game1.maxVelocity * dt;
 
-            Vector2 enemyVelocity = direction * speed * deltaTime;
-
-            enemyPosition += enemyVelocity;
+            enemyPosition += enemyVelocity*dt;
+            
+            //enemyPosition += direction;
         }
 
         private void ChasePlayer()
@@ -88,7 +90,7 @@ namespace AIE_PIRATE_PROJECT
             foreach (Enemy e in enemies)
             {
 
-                if (  )
+               // if (  )
                 {
                     //fire cannon at player
 
@@ -111,11 +113,17 @@ namespace AIE_PIRATE_PROJECT
     }
     class enemyShip : Enemy
     {
-        public enemyShip(Vector2 newPos) : base(newPos) { }
+        public enemyShip(Vector2 newPos) : base(newPos)
+        {
+            //speed =?;
+        }
     }
     class enemyBoss : Enemy
     {
-        public enemyBoss(Vector2 newPos) : base(newPos) { }
+        public enemyBoss(Vector2 newPos) : base(newPos)
+        {
+            //speed =?;
+        }
     }
 }
 /*

@@ -15,7 +15,10 @@ namespace AIE_PIRATE_PROJECT
     public class Game1 : Game
     {
 
-        
+        public static int tile =64;
+        public static float meter = tile;
+        public static Vector2 maxVelocity = new Vector2(meter * 20f, meter * 20f);
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
@@ -31,8 +34,10 @@ namespace AIE_PIRATE_PROJECT
         SpriteFont gameText;
         int score = 0;
         int lives = 3;
+        private int screenY;
+        private int screenX;
 
-        
+
 
         Player player = new Player();
         public Game1()
@@ -43,8 +48,8 @@ namespace AIE_PIRATE_PROJECT
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
             graphics.PreferMultiSampling = true;
-            //screenY = graphics.GraphicsDevice.Viewport.Height;
-            //screenX = graphics.GraphicsDevice.Viewport.Width;
+            screenY = graphics.GraphicsDevice.Viewport.Height;
+            screenX = graphics.GraphicsDevice.Viewport.Width;
 
         }
 
@@ -89,7 +94,11 @@ namespace AIE_PIRATE_PROJECT
                 Exit();
             
             player.Update(gameTime);
-            cam.LookAt(player.Position);
+            foreach (Enemy e in Enemy.enemies)
+            {
+                e.Update(gameTime, player.Position);
+            }
+            cam.Position= player.Position;
             base.Update(gameTime);
         }
 
@@ -111,8 +120,6 @@ namespace AIE_PIRATE_PROJECT
 
             //spriteBatch.Draw(playerSprite, player.Position, Color.White);
             spriteBatch.Draw(playerSprite, player.Position, null, Color.White, player.playerRotation, player.playerOffset, 0.5f, SpriteEffects.None, 0);
-            spriteBatch.End();
-            spriteBatch.Begin();
             foreach (Enemy e in Enemy.enemies)
             {
                 Texture2D enemyDraw;
@@ -126,6 +133,9 @@ namespace AIE_PIRATE_PROJECT
                 }
                 spriteBatch.Draw(enemyDraw, e.Position, Color.White);
             }
+            spriteBatch.End();
+            spriteBatch.Begin();
+            
             spriteBatch.DrawString(gameText, "SCORE " + score, new Vector2(30, 30), Color.Black, 0, new Vector2(0, 0), 1 * 1.5f, SpriteEffects.None, 0);
             for (int i = 0; i < lives; i++)
             {
