@@ -74,25 +74,19 @@ namespace AIE_PIRATE_PROJECT
 
         public void Update(GameTime gameTime, Vector2 playerPosition)
         {
-<<<<<<< HEAD
-            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-=======
-           
 
-           /* Vector2 direction = Player.Position - enemyPosition;
->>>>>>> 1ba68bdba3c0ca2ea8e48ca900eb5047cc06c4ae
+            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
 
             Vector2 direction = playerPosition - enemyPosition;
             direction.Normalize();
             Vector2 enemyVelocity = direction * speed * Game1.maxVelocity * dt;
 
-<<<<<<< HEAD
+
             enemyPosition += enemyVelocity*dt;
+
             
-            //enemyPosition += direction;
-=======
-            enemyPosition += enemyVelocity; */
->>>>>>> 1ba68bdba3c0ca2ea8e48ca900eb5047cc06c4ae
+
         }
 
         private void ChasePlayer()
@@ -100,11 +94,11 @@ namespace AIE_PIRATE_PROJECT
             foreach (Enemy e in enemies)
             {
 
-<<<<<<< HEAD
+
                // if (  )
-=======
+
                /* if (  )
->>>>>>> 1ba68bdba3c0ca2ea8e48ca900eb5047cc06c4ae
+
                 {
                     //fire cannon at player
 
