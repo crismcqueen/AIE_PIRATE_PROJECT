@@ -48,9 +48,15 @@ namespace AIE_PIRATE_PROJECT
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
             graphics.PreferMultiSampling = true;
-            screenY = graphics.GraphicsDevice.Viewport.Height;
-            screenX = graphics.GraphicsDevice.Viewport.Width;
+            
 
+        }
+        public int ScreenX
+        {
+            get
+            {
+                return screenX;
+            }
         }
 
 
@@ -98,7 +104,7 @@ namespace AIE_PIRATE_PROJECT
             {
                 e.Update(gameTime, player.Position);
             }
-            cam.Position= player.Position;
+            cam.LookAt(player.Position);
             base.Update(gameTime);
         }
 

@@ -35,10 +35,10 @@ namespace AIE_PIRATE_PROJECT
         {
             cannonPosition += cannonVelocity * deltaTime;
 
-            if (cannonPosition.X < 0 || cannonPosition.X > Game1.screenX || cannonPosition.Y < 0 || cannonPosition.Y > screenY)
-            {
-                cannonAlive = true;
-            }
+            //if (cannonPosition.X < 0 || cannonPosition.X > graphics.GraphicsDevice.Viewport.Width || cannonPosition.Y < 0 || cannonPosition.Y > Game1.screenY)
+            //{
+            //    cannonAlive = true;
+           // }
         }
     }
 }
