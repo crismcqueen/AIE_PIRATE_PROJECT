@@ -109,6 +109,20 @@ namespace AIE_PIRATE_PROJECT
 
         } 
 
+        private bool IsColliding (Vector2 positon1, float radius1, Vector2 position2, float radius2)
+        {
+            Vector2 direction = position2 - positon1;
+            float length = direction.Length();
+
+            if (radius1 + radius2 <= length)
+            {
+                return false;
+
+            }
+
+            return true;
+        }
+
 
         public void Draw(SpriteBatch spriteBatch)
         {
