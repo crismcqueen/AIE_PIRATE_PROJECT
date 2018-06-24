@@ -94,24 +94,28 @@ namespace AIE_PIRATE_PROJECT
             foreach (Enemy e in enemies)
             {
 
-
-               // if (  )
-
-               /* if (  )
-
+                /*if (IsColliding() == true)
                 {
-                    //fire cannon at player
+                    //fire at player
+                    //projectiles yet to be implemented
 
-                }*/
-                
+                } 
+                else 
+                {
+                    
+                    
+                } */
+             
+                   
 
+               
             }
 
         } 
 
-        private bool IsColliding (Vector2 positon1, float radius1, Vector2 position2, float radius2)
+        protected bool IsColliding (Vector2 playerPosition, float radius1, Vector2 enemyPosition, float radius2)
         {
-            Vector2 direction = position2 - positon1;
+            Vector2 direction = enemyPosition - playerPosition;
             float length = direction.Length();
 
             if (radius1 + radius2 <= length)
