@@ -14,7 +14,7 @@ namespace AIE_PIRATE_PROJECT
     /// </summary>
     public class Game1 : Game
     {
-
+        Projectile cannonProjectile= new Projectile();
         public static int tile =64;
         public static float meter = tile;
         public static Vector2 maxVelocity = new Vector2(meter * 20f, meter * 20f);
@@ -34,8 +34,8 @@ namespace AIE_PIRATE_PROJECT
         SpriteFont gameText;
         int score = 0;
         int lives = 3;
-        private int screenY;
-        private int screenX;
+        //private int ScreenY;
+        //private int screenX;
 
 
 
@@ -51,11 +51,19 @@ namespace AIE_PIRATE_PROJECT
             
 
         }
+        public int ScreenY
+        {
+            get
+            {
+                return graphics.GraphicsDevice.Viewport.Width;
+            }
+        }
+
         public int ScreenX
         {
             get
             {
-                return screenX;
+                return graphics.GraphicsDevice.Viewport.Height;
             }
         }
 
@@ -138,6 +146,11 @@ namespace AIE_PIRATE_PROJECT
                     enemyDraw = enemyBossSprite;
                 }
                 spriteBatch.Draw(enemyDraw, e.Position, Color.White);
+
+            }
+            if (cannonProjectile.cannonAlive == false)
+            {
+                spriteBatch.Draw(cannonballSprite, cannonProjectile.cannonPosition, null, Color.White, 0, cannonProjectile.cannonOffset, 0.5f, SpriteEffects.None, 0);
             }
             spriteBatch.End();
             spriteBatch.Begin();

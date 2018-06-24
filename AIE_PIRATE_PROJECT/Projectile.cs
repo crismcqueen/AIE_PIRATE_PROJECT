@@ -10,13 +10,14 @@ namespace AIE_PIRATE_PROJECT
 {
     class Projectile
     {
-        //private Texture2D bulletTexture;
-        private Vector2 cannonPosition = new Vector2(0, 0);
+        Game1 Game = null;
+        public Texture2D cannonBall;
+        public Vector2 cannonPosition = new Vector2(0, 0);
         private Vector2 cannonVelocity = new Vector2(0, 0);
-        private Vector2 cannonOffset = new Vector2(0, 0);
+        public Vector2 cannonOffset = new Vector2(0, 0);
         private float cannonSpeed = 200;
         private float cannonRadius = 5;
-        private bool cannonAlive = true;
+        public bool cannonAlive = true;
 
         //public Projectile(Vector2 newPossition,)
         public void cannonProjectile(Vector2 position, float rotation)
@@ -35,10 +36,10 @@ namespace AIE_PIRATE_PROJECT
         {
             cannonPosition += cannonVelocity * deltaTime;
 
-            //if (cannonPosition.X < 0 || cannonPosition.X > graphics.GraphicsDevice.Viewport.Width || cannonPosition.Y < 0 || cannonPosition.Y > Game1.screenY)
-            //{
-            //    cannonAlive = true;
-           // }
+            if (cannonPosition.X < 0 || cannonPosition.X > Game.ScreenX || cannonPosition.Y < 0 || cannonPosition.Y > Game.ScreenY)
+            {
+                cannonAlive = true;
+            }
         }
     }
 }

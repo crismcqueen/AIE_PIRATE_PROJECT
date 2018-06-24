@@ -11,8 +11,8 @@ using Microsoft.Xna.Framework.Content;
 namespace AIE_PIRATE_PROJECT
 {
     class Player
-
     {
+        Projectile cannonProjectile = null;
         private Vector2 position = new Vector2(100, 100);
         private int health = 3;
         //public Vector2 playerPosition = new Vector2(0, 0);
@@ -102,7 +102,8 @@ namespace AIE_PIRATE_PROJECT
             // shoot a bullet 
             if (state.IsKeyDown(Keys.Space) == true)
             {
-
+               cannonProjectile.cannonProjectile(position, playerRotation);
+                
             }
         }
     }
