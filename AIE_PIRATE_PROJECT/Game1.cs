@@ -9,12 +9,16 @@ using System;
 
 namespace AIE_PIRATE_PROJECT
 {
+    enum Direction
+    {
+        Port,Starboard
+    }
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
     public class Game1 : Game
     {
-        Projectile cannonProjectile= new Projectile();
+        Projectile cannonProjectile= null;
         public static int tile =64;
         public static float meter = tile;
         public static Vector2 maxVelocity = new Vector2(meter * 20f, meter * 20f);

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,14 +13,33 @@ namespace AIE_PIRATE_PROJECT
     {
         Game1 Game = null;
         public Texture2D cannonBall;
-        public Vector2 cannonPosition = new Vector2(0, 0);
+        private Direction direction;
+        private Vector2 cannonPosition = new Vector2(0, 0);
         private Vector2 cannonVelocity = new Vector2(0, 0);
-        public Vector2 cannonOffset = new Vector2(0, 0);
-        private float cannonSpeed = 200;
-        private float cannonRadius = 5;
+        private Vector2 cannonOffset = new Vector2(0, 0);
+        private int cannonSpeed = 200;
+        private int cannonRadius = 5;
         public bool cannonAlive = true;
+        public Projectile(Vector2 newPos, Direction newDir)
+        {
+            cannonPosition = newPos;
+            direction = newDir;
+        }
 
-        //public Projectile(Vector2 newPossition,)
+        public Vector2 Position
+        {
+            get
+            {
+                return cannonPosition;
+            }
+        } 
+        public int Radius
+        {
+            get
+            {
+                return cannonRadius;
+            }
+        }
         public void cannonProjectile(Vector2 position, float rotation)
         {
             if (cannonAlive == false)
