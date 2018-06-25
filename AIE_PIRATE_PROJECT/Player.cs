@@ -100,10 +100,15 @@ namespace AIE_PIRATE_PROJECT
             //Vector2 playerDirection = new Vector2(-(float)Math.Sin(playerRotation), (float)Math.Cos(playerRotation));
             //playerDirection.Normalize();
             // shoot a bullet 
-            if (state.IsKeyDown(Keys.Space) == true)
+            if (state.IsKeyDown(Keys.A) == true)
             {
                cannonProjectile.cannonProjectile(position, playerRotation);
                 
+            }
+            if (state.IsKeyDown(Keys.D) == true)
+            {
+                cannonProjectile.cannonProjectile(position, -playerRotation);
+
             }
         }
     }

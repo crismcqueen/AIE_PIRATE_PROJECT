@@ -11,6 +11,7 @@ namespace AIE_PIRATE_PROJECT
 {
     class Projectile
     {
+        public static List<Projectile> projectiles = new List<Projectile>();
         Game1 Game = null;
         public Texture2D cannonBall;
         private Direction direction;
@@ -51,7 +52,19 @@ namespace AIE_PIRATE_PROJECT
             cannonPosition = position;
             cannonAlive = false;
         }
-
+        public void Update (GameTime gameTime)
+        {
+            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            switch (direction)
+            {
+                case Direction.Port:
+                    cannonPosition.X += cannonSpeed * dt;
+                    break;
+                case Direction.Starboard:
+                    cannonPosition.Y -= cannonSpeed * dt;
+                    break;
+            }
+        }
         public void UpdateBullet(float deltaTime)
         {
             cannonPosition += cannonVelocity * deltaTime;
