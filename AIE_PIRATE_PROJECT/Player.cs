@@ -12,7 +12,8 @@ namespace AIE_PIRATE_PROJECT
 {
     class Player
     {
-        Projectile cannonProjectile = null;
+        public List<Projectile> projectiles = new List<Projectile>();
+        
         private Vector2 position = new Vector2(100, 100);
         private int health = 3;
         //public Vector2 playerPosition = new Vector2(0, 0);
@@ -95,6 +96,10 @@ namespace AIE_PIRATE_PROJECT
             // calculate the player's new position
             position.X += (float)x;
             position.Y += (float)y;
+            foreach (Projectile can in projectiles)
+            {
+                can.UpdateBullet(dt);
+            }                       
 
 
             //Vector2 playerDirection = new Vector2(-(float)Math.Sin(playerRotation), (float)Math.Cos(playerRotation));
@@ -102,15 +107,30 @@ namespace AIE_PIRATE_PROJECT
             // shoot a bullet 
             if (state.IsKeyDown(Keys.A) == true)
             {
-               cannonProjectile.cannonProjectile(position, playerRotation);
-                
+              // cannonProjectile.cannonProjectile(position, ForwardDirection(playerRotation +MathHelper.ToRadians (180) ));
+
+                Projectile projectile = new Projectile(position, ForwardDirection(playerRotation + MathHelper.ToRadians(180)));
+                projectiles.Add(projectile);
             }
             if (state.IsKeyDown(Keys.D) == true)
             {
-                cannonProjectile.cannonProjectile(position, -playerRotation);
+                Projectile projectile = new Projectile(position, ForwardDirection(playerRotation  ));
+                projectiles.Add(projectile); 
 
             }
+            Vector2 ForwardDirection(float rotationDirection)
+            {
+                Vector2 forwardDirection = Vector2.Zero;
+                float rotation = rotationDirection;
+                Vector2 direction = new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation));
+                direction.Normalize();
+                forwardDirection = direction;
+
+
+                return forwardDirection;
+            }
         }
+        
     }
     /*
         {

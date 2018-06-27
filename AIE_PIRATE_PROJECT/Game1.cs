@@ -9,16 +9,13 @@ using System;
 
 namespace AIE_PIRATE_PROJECT
 {
-    enum Direction
-    {
-        Port,Starboard
-    }
+    
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
     public class Game1 : Game
     {
-        Projectile cannonProjectile= null;
+        
         public static int tile =64;
         public static float meter = tile;
         public static Vector2 maxVelocity = new Vector2(meter * 20f, meter * 20f);
@@ -138,6 +135,7 @@ namespace AIE_PIRATE_PROJECT
 
             //spriteBatch.Draw(playerSprite, player.Position, Color.White);
             spriteBatch.Draw(playerSprite, player.Position, null, Color.White, player.playerRotation, player.playerOffset, 0.5f, SpriteEffects.None, 0);
+            
             foreach (Enemy e in Enemy.enemies)
             {
                 Texture2D enemyDraw;
@@ -152,6 +150,10 @@ namespace AIE_PIRATE_PROJECT
                 spriteBatch.Draw(enemyDraw, e.Position, Color.White);
 
             }
+            foreach (Projectile can in player.projectiles)
+            {
+                spriteBatch.Draw(cannonballSprite, can.Position, null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, 0);
+            } 
             /*
             if (cannonProjectile.cannonAlive == false)
             {
