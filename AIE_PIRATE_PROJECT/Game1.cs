@@ -152,10 +152,12 @@ namespace AIE_PIRATE_PROJECT
                 spriteBatch.Draw(enemyDraw, e.Position, Color.White);
 
             }
+            /*
             if (cannonProjectile.cannonAlive == false)
             {
-                spriteBatch.Draw(cannonballSprite, cannonProjectile.cannonPosition, null, Color.White, 0, cannonProjectile.cannonOffset, 0.5f, SpriteEffects.None, 0);
+                //spriteBatch.Draw(cannonballSprite, cannonProjectile.cannonPosition, null, Color.White, 0, cannonProjectile.cannonOffset, 0.5f, SpriteEffects.None, 0);
             }
+            */
             spriteBatch.End();
             spriteBatch.Begin();
             

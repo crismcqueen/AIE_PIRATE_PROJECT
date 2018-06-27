@@ -63,11 +63,11 @@ namespace AIE_PIRATE_PROJECT
 
             if (state.IsKeyDown(Keys.Up) == true)
             {
-                ySpeed += playerSpeed * dt;
+                ySpeed -= playerSpeed * dt;
             }
             else if (state.IsKeyDown(Keys.Up) == false)
             {
-                ySpeed += playerWind * dt;
+                ySpeed -= playerWind * dt;
             }
             if (state.IsKeyDown(Keys.Down) == true)
             {
