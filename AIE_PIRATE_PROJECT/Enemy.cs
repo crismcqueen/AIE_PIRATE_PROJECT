@@ -141,14 +141,14 @@ namespace AIE_PIRATE_PROJECT
     {
         public enemyShip(Vector2 newPos) : base(newPos)
         {
-            //speed =?;
+            speed =4;
         }
     }
     class enemyBoss : Enemy
     {
         public enemyBoss(Vector2 newPos) : base(newPos)
         {
-            //speed =?;
+            speed =4;
         }
     }
 }
