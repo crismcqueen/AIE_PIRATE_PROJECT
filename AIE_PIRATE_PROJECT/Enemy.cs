@@ -26,7 +26,7 @@ namespace AIE_PIRATE_PROJECT
         float enemyTurnSpeed = 1;
         float xSpeed = 0;
         float ySpeed = 0;
-
+        
         public static List<Enemy> enemies = new List<Enemy>();
 
         public Vector2 Position
@@ -72,41 +72,52 @@ namespace AIE_PIRATE_PROJECT
 
         public void Update(GameTime gameTime, Vector2 playerPosition)
         {
-
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-
 
             Vector2 direction = playerPosition - enemyPosition;
             direction.Normalize();
             Vector2 enemyVelocity = direction * speed * Game1.maxVelocity * dt;
 
+            enemyPosition += enemyVelocity * dt;
 
 
             double x = (xSpeed * Math.Cos(enemyRotation)) - (ySpeed * Math.Sin(enemyRotation));
             double y = (xSpeed * Math.Sin(enemyRotation)) + (ySpeed * Math.Cos(enemyRotation));
         }
 
-        private void ChasePlayer()
+       /*public static float Angle(Vector2 p_vector2)
         {
-            
-            foreach (Enemy e in enemies)
+            if (p_vector2.x < 0)
             {
-
-                /*if (IsColliding(e.radius, playerPosition ) == true)
-                {
-                    //face player 
-                    //fire at player
-                    //projectiles yet to be implemented
-
-                }
-                else
-                {
-                    //don't fire at player
-
-                } */
-
+                return 360 - (Math.Atan2(p_vector2.x, p_vector2.y) * Math.Rad2Deg * -1);
             }
-        } 
+            else
+            {
+                return Math.Atan2(p_vector2.x, p_vector2.y) * Math.Rad2Deg;
+            } 
+        } */
+
+        private void ChasePlayer()
+         {
+             foreach (Enemy e in enemies)
+             {
+
+                 /*if (IsColliding(e.radius, playerPosition ) == true)
+                 {
+                     //face player 
+                     //fire at player
+                     //projectiles yet to be implemented
+
+                 }
+                 else
+                 {
+                     //don't fire at player
+
+                 } */
+
+             }
+
+         } 
 
         protected bool IsColliding (Vector2 playerPosition, float radius1, Vector2 enemyPosition, float radius2)
         {
