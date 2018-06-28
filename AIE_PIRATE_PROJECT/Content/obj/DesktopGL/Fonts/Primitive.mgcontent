@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Fonts/Primitive.spritefont</SourceFile>
-  <SourceTime>2018-06-12T09:04:44.390608+10:00</SourceTime>
-  <DestFile>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/bin/DesktopGL/Fonts/Primitive.xnb</DestFile>
-  <DestTime>2018-06-27T19:39:52.0070607+10:00</DestTime>
+  <SourceFile>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Fonts/Primitive.spritefont</SourceFile>
+  <SourceTime>2018-06-09T13:00:52.8469197+10:00</SourceTime>
+  <DestFile>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/bin/DesktopGL/Fonts/Primitive.xnb</DestFile>
+  <DestTime>2018-06-28T17:44:26.6327726+10:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2017-03-02T02:05:36+11:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>
