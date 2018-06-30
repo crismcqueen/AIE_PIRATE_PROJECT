@@ -26,6 +26,9 @@ namespace AIE_PIRATE_PROJECT
         public float playerRotation = 0;
         //private float playerRadius = 20;
         //private bool playerAlive = true;
+        float attackDelay = 0.5f;
+        float timerDelay = 0.5f;
+
         public int Health
         {
             get
@@ -61,7 +64,7 @@ namespace AIE_PIRATE_PROJECT
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             float xSpeed = 0;
             float ySpeed = 0;
-
+            timerDelay -= dt;
             if (state.IsKeyDown(Keys.Up) == true)
             {
                 ySpeed -= playerSpeed * dt;
@@ -105,18 +108,18 @@ namespace AIE_PIRATE_PROJECT
             //Vector2 playerDirection = new Vector2(-(float)Math.Sin(playerRotation), (float)Math.Cos(playerRotation));
             //playerDirection.Normalize();
             // shoot a bullet 
-            if (state.IsKeyDown(Keys.A) == true)
+            if (state.IsKeyDown(Keys.A) == true && timerDelay <= 0)
             {
               // cannonProjectile.cannonProjectile(position, ForwardDirection(playerRotation +MathHelper.ToRadians (180) ));
-
                 Projectile projectile = new Projectile(position, ForwardDirection(playerRotation + MathHelper.ToRadians(180)));
                 projectiles.Add(projectile);
+                timerDelay = attackDelay;
             }
-            if (state.IsKeyDown(Keys.D) == true)
+            if (state.IsKeyDown(Keys.D) == true && timerDelay <= 0)
             {
-                Projectile projectile = new Projectile(position, ForwardDirection(playerRotation  ));
-                projectiles.Add(projectile); 
-
+                Projectile projectile = new Projectile(position, ForwardDirection(playerRotation));
+                projectiles.Add(projectile);
+                timerDelay = attackDelay;
             }
             Vector2 ForwardDirection(float rotationDirection)
             {
@@ -132,102 +135,6 @@ namespace AIE_PIRATE_PROJECT
         }
         
     }
-    /*
-        {
-
-            Sprite sprite;
-
-            bool isAlive = true;
-            // temp. just trying to get camera to work this way if fail will put in game1
-            public Vector2 position;
-            public Vector2 box;
-            //pos
-
-            float rotation;
-
-            //pos'
-            Vector2 velocity;
-            float stear;
-
-            //pos''
-            const float acceleration = 10;
-            const float deceleration = 7;
-            const float forcedDeceleration = 12;
-            const float stearPower = 3;
-            const float maxSpeed = 50;
-            const float maxTurn = 10;
-
-            public Player(Sprite sprite)
-            {
-                this.sprite = sprite;
-            }
-
-            public void Load(ContentManager content, String assetName)
-            {
-                sprite = new Sprite(assetName);
-                sprite.Load(content);
-            }
-
-            public void Update(float deltaTime, KeyboardState state)
-            {
-                Vector2 force = Vector2.Zero;
-                float turn = 0;
-
-                //Accleration
-                if (state.IsKeyDown(Keys.W) || state.IsKeyDown(Keys.Up))
-                {
-                    force.X = (float)Math.Sin(rotation) * acceleration;
-                    force.Y = (float)Math.Cos(rotation) * acceleration;
-                }
-
-                //Turn
-                if (state.IsKeyDown(Keys.A) || state.IsKeyDown(Keys.Left))
-                {
-                    turn += stearPower;
-                }
-
-                if (state.IsKeyDown(Keys.D) || state.IsKeyDown(Keys.Right))
-                {
-                    turn -= stearPower;
-                }
-
-                //Deceleration
-                if (!(state.IsKeyDown(Keys.W) || state.IsKeyDown(Keys.Up)) || state.IsKeyDown(Keys.S) || state.IsKeyDown(Keys.Down))
-                {
-                    if (velocity.Length() < 0)
-                    {
-                        if (state.IsKeyDown(Keys.S) || state.IsKeyDown(Keys.Down))
-                        {
-                            force.X = -(float)Math.Sin(rotation) * forcedDeceleration;
-                            force.Y = -(float)Math.Cos(rotation) * forcedDeceleration;
-                        }
-                        else
-                        {
-                            force.X = -(float)Math.Sin(rotation) * deceleration;
-                            force.Y = -(float)Math.Cos(rotation) * deceleration;
-                        }
-                    }
-                    else
-                    {
-                        velocity = Vector2.Zero;
-                        force = Vector2.Zero;
-                    }
-                }
-
-                velocity += (force * deltaTime);
-                stear += (turn * deltaTime);
-
-                position += (velocity * deltaTime);
-                rotation += (stear * deltaTime);
-            }
-
-            public void Draw(SpriteBatch spriteBatch)
-            {
-                sprite.draw(spriteBatch, position, rotation);
-            }
-
-
-        }
-            */
+   
 
 }
