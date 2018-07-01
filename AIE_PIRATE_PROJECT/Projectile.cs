@@ -20,14 +20,25 @@ namespace AIE_PIRATE_PROJECT
         private Vector2 cannonOffset = new Vector2(0, 0);
         private int cannonSpeed = 200;
         private int cannonRadius = 5;
-        public bool cannonAlive = true;
+        private bool cannonCollided = false;
+        private bool cannonRange = true;
+        public bool isAlive = false;
         public Projectile(Vector2 position, Vector2 direction)
         {
             cannonVelocity = direction * cannonSpeed;
             cannonPosition = position;
         }
-
-        public Vector2 Position
+        public bool Collided
+        {
+            get { return cannonCollided; }
+            set { cannonCollided = value; }
+        }
+        public bool Missed
+        {
+            get { return cannonRange; }
+            set { cannonRange = value; }
+        }
+        public Vector2 CannonPosition
         {
             get
             {

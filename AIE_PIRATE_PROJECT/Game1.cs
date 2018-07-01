@@ -111,9 +111,9 @@ namespace AIE_PIRATE_PROJECT
             player.Update(gameTime);
             foreach (Enemy e in Enemy.enemies)
             {
-                e.Update(gameTime, player.Position);
+                e.Update(gameTime, player.PlayerPosition);
             }
-            cam.LookAt(player.Position);
+            cam.LookAt(player.PlayerPosition);
             base.Update(gameTime);
         }
 
@@ -132,9 +132,13 @@ namespace AIE_PIRATE_PROJECT
             //spriteBatch.Draw(splashScreen, new Vector2(0, 0), Color.Silver);
 
             spriteBatch.DrawString(gameText, "test press escape to exit", new Vector2(100, 100), Color.DarkRed, 0, new Vector2(0, 0), 1 * 3, SpriteEffects.None, 0);
+            foreach (Projectile can in player.projectiles)
+            {
+                spriteBatch.Draw(cannonballSprite, can.CannonPosition, null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, 0);
 
+            }
             //spriteBatch.Draw(playerSprite, player.Position, Color.White);
-            spriteBatch.Draw(playerSprite, player.Position, null, Color.White, player.playerRotation, player.playerOffset, 0.5f, SpriteEffects.None, 0);
+            spriteBatch.Draw(playerSprite, player.PlayerPosition, null, Color.White, player.playerRotation, player.playerOffset, 0.5f, SpriteEffects.None, 0);
             
             foreach (Enemy e in Enemy.enemies)
             {
@@ -150,16 +154,8 @@ namespace AIE_PIRATE_PROJECT
                 spriteBatch.Draw(enemyDraw, e.Position, Color.White);
 
             }
-            foreach (Projectile can in player.projectiles)
-            {
-                spriteBatch.Draw(cannonballSprite, can.Position, null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, 0);
-            } 
-            /*
-            if (cannonProjectile.cannonAlive == false)
-            {
-                //spriteBatch.Draw(cannonballSprite, cannonProjectile.cannonPosition, null, Color.White, 0, cannonProjectile.cannonOffset, 0.5f, SpriteEffects.None, 0);
-            }
-            */
+            
+            
             spriteBatch.End();
             spriteBatch.Begin();
             

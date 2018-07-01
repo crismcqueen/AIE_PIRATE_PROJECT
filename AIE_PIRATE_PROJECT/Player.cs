@@ -29,7 +29,7 @@ namespace AIE_PIRATE_PROJECT
         float attackDelay = 0.5f;
         float timerDelay = 0.5f;
 
-        public int Health
+        public int PlayerHealth
         {
             get
             {
@@ -41,7 +41,7 @@ namespace AIE_PIRATE_PROJECT
             }
         }
 
-        public Vector2 Position
+        public Vector2 PlayerPosition
         {
             get
             {
@@ -101,7 +101,12 @@ namespace AIE_PIRATE_PROJECT
             position.Y += (float)y;
             foreach (Projectile can in projectiles)
             {
+                if (Vector2.Distance(can.CannonPosition, PlayerPosition) > 0.5f)
+                    can.isAlive = false;
+                
                 can.UpdateBullet(dt);
+                can.CannonPosition.Normalize();
+                
             }                       
 
 
@@ -120,6 +125,7 @@ namespace AIE_PIRATE_PROJECT
                 Projectile projectile = new Projectile(position, ForwardDirection(playerRotation));
                 projectiles.Add(projectile);
                 timerDelay = attackDelay;
+
             }
             Vector2 ForwardDirection(float rotationDirection)
             {
@@ -132,8 +138,11 @@ namespace AIE_PIRATE_PROJECT
 
                 return forwardDirection;
             }
+            
         }
         
+        
+
     }
    
 
