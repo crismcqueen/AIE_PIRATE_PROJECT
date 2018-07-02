@@ -101,12 +101,13 @@ namespace AIE_PIRATE_PROJECT
             position.Y += (float)y;
             foreach (Projectile can in projectiles)
             {
-                if (Vector2.Distance(can.CannonPosition, PlayerPosition) > 250f)
+                if (Vector2.Distance(can.spawnPosition, PlayerPosition) > 325f)
                 {
+                    
                     projectiles.Remove(can);
                     break;
                 }
-
+                
                 //can.isAlive = false;
                 can.UpdateBullet(dt);
                 

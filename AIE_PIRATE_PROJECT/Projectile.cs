@@ -18,6 +18,7 @@ namespace AIE_PIRATE_PROJECT
         private Vector2 cannonPosition = new Vector2(0, 0);
         private Vector2 cannonVelocity = new Vector2(0, 0);
         private Vector2 cannonOffset = new Vector2(0, 0);
+        public Vector2 spawnPosition = new Vector2(0, 0);
         private int cannonSpeed = 200;
         private int cannonRadius = 5;
         private bool cannonCollided = false;
@@ -27,6 +28,7 @@ namespace AIE_PIRATE_PROJECT
         {
             cannonVelocity = direction * cannonSpeed;
             cannonPosition = position;
+            spawnPosition = position;
         }
         public bool Collided
         {
