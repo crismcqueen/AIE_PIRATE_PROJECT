@@ -12,7 +12,7 @@ namespace AIE_PIRATE_PROJECT
     class Projectile
     {
         
-        Game1 Game = null;
+        //Game1 Game = null;
         
         
         private Vector2 cannonPosition = new Vector2(0, 0);

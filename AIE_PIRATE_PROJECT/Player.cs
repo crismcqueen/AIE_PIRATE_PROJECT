@@ -101,12 +101,18 @@ namespace AIE_PIRATE_PROJECT
             position.Y += (float)y;
             foreach (Projectile can in projectiles)
             {
-                if (Vector2.Distance(can.CannonPosition, PlayerPosition) > 0.5f)
-                    can.isAlive = false;
-                
+                if (Vector2.Distance(can.CannonPosition, PlayerPosition) > 250f)
+                {
+                    projectiles.Remove(can);
+                    break;
+                }
+
+                //can.isAlive = false;
                 can.UpdateBullet(dt);
                 
-                
+
+
+
             }                       
 
 
@@ -119,7 +125,9 @@ namespace AIE_PIRATE_PROJECT
                 Projectile projectile = new Projectile(position, ForwardDirection(playerRotation + MathHelper.ToRadians(180)));
                 projectiles.Add(projectile);
                 timerDelay = attackDelay;
+
             }
+            
             if (state.IsKeyDown(Keys.D) == true && timerDelay <= 0)
             {
                 Projectile projectile = new Projectile(position, ForwardDirection(playerRotation));
