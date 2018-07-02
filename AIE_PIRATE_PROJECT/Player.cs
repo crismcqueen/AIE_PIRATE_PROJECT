@@ -105,7 +105,7 @@ namespace AIE_PIRATE_PROJECT
                     can.isAlive = false;
                 
                 can.UpdateBullet(dt);
-                can.CannonPosition.Normalize();
+                
                 
             }                       
 
