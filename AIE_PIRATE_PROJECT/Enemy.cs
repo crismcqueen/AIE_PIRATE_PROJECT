@@ -16,7 +16,7 @@ namespace AIE_PIRATE_PROJECT
 {
     class Enemy
     {
-        //Game1 game = null;
+        Game1 game = null;
         private Vector2 enemyPosition;
         
         protected int health;
@@ -26,6 +26,7 @@ namespace AIE_PIRATE_PROJECT
         float enemyTurnSpeed = 1;
         float xSpeed = 0;
         float ySpeed = 0;
+        public Player GetPlayer { get; set; }
         
         public static List<Enemy> enemies = new List<Enemy>();
 
@@ -47,6 +48,20 @@ namespace AIE_PIRATE_PROJECT
         {
             enemyPosition = newPos;
         }
+
+       /* float RotateTo(Vector2 pointTo)
+        {
+            float rot = 0;
+
+            Vector2 direction = enemyPosition - pointTo;
+            direction.Normalize();
+
+            rot = (float)Math.Atan2((double)direction.Y, (double)direction.X);
+
+            rot += MathHelper.ToRadians(90);
+
+            return rot;
+        } */
 
         public void Load(ContentManager content)
         {
@@ -72,6 +87,7 @@ namespace AIE_PIRATE_PROJECT
             //Vector2 velocity = new Vector2((float)(enemyTurnSpeed * Math.Sin(enemyRotation)), (float)(enemyTurnSpeed * Math.Cos(enemyRotation)));
             enemyRotation = Angle(direction);
 
+            //enemyRotation = RotateTo(GetPlayer.PlayerPosition);
             
         }
 
@@ -85,30 +101,30 @@ namespace AIE_PIRATE_PROJECT
             {
                 return MathHelper.ToRadians((float) Math.Atan2(p_vector2.X, p_vector2.Y));
             }
-        }
+        } 
 
 
         private void ChasePlayer()
-         {
+        {
              foreach (Enemy e in enemies)
              {
 
                  /*if (IsColliding(e.radius, playerPosition ) == true)
                  {
-                     //face player 
-                     //fire at player
-                     //projectiles yet to be implemented
+                    
+                     
+                     
 
                  }
                  else
                  {
-                     //don't fire at player
+                     
 
                  } */
 
              }
 
-         } 
+        } 
 
         protected bool IsColliding (Vector2 playerPosition, float radius1, Vector2 enemyPosition, float radius2)
         {
