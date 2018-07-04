@@ -44,7 +44,7 @@ namespace AIE_PIRATE_PROJECT
         {
             Rectangle drawArea = new Rectangle((int)((width + border) * spriteColumn) + margin, (int)((height + border) * spriteRow) + margin, (int)width, (int)height);
 
-            spriteBatch.Draw(texture, location, drawArea, Color.White, rotation, (new Vector2((float)width / 2, (float)height / 2)), Vector2.Zero, spriteEffects, 0);
+            spriteBatch.Draw(texture, location, drawArea, Color.Red, rotation, (new Vector2((float)width / 2, (float)height / 2)), Vector2.Zero, spriteEffects, 0);
         }
     }
 }

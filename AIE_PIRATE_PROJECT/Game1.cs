@@ -9,7 +9,15 @@ using System;
 
 namespace AIE_PIRATE_PROJECT
 {
-    
+    enum UI
+    {
+     STATE_TITLE,
+     STATE_GAME,
+     STATE_PAUSE,
+     STATE_GAMEOVERDIE,
+     STATE_GAMEOVERWIN
+     
+    }
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
@@ -19,7 +27,7 @@ namespace AIE_PIRATE_PROJECT
         public static int tile =64;
         public static float meter = tile;
         public static Vector2 maxVelocity = new Vector2(meter * 20f, meter * 20f);
-
+        private UI STATE = UI.STATE_TITLE;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 

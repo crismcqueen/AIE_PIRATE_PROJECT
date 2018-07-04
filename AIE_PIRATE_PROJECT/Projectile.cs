@@ -22,7 +22,8 @@ namespace AIE_PIRATE_PROJECT
         private int cannonSpeed = 200;
         private int cannonRadius = 5;
         private bool cannonCollided = false;
-        private bool cannonRange = true;
+        private int cannonRange = 250;
+        private bool cannonMissed = true;
         public bool isAlive = false;
         public Projectile(Vector2 position, Vector2 direction)
         {
@@ -37,8 +38,15 @@ namespace AIE_PIRATE_PROJECT
         }
         public bool Missed
         {
-            get { return cannonRange; }
-            set { cannonRange = value; }
+            get { return cannonMissed; }
+            set { cannonMissed = value; }
+        }
+        public int CannonRange
+        {
+            get
+            {
+                return cannonRange;
+            }
         }
         public Vector2 CannonPosition
         {

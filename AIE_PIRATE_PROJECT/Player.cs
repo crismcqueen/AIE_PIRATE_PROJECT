@@ -15,6 +15,7 @@ namespace AIE_PIRATE_PROJECT
         public List<Projectile> projectiles = new List<Projectile>();
         
         private Vector2 position = new Vector2(100, 100);
+       
         private int health = 3;
         //public Vector2 playerPosition = new Vector2(0, 0);
         public Vector2 playerOffset = new Vector2(0, 0);
@@ -24,7 +25,8 @@ namespace AIE_PIRATE_PROJECT
         private float playerDrift = 20.0f;
         private float playerTurnSpeed = 1;
         public float playerRotation = 0;
-        //private float playerRadius = 20;
+        private float detectRadius = 300;
+        private float playerRadius = 20;
         //private bool playerAlive = true;
         float attackDelay = 0.5f;
         float timerDelay = 0.5f;
@@ -40,7 +42,17 @@ namespace AIE_PIRATE_PROJECT
                 health = value;
             }
         }
-
+        public float PlayerDetection
+        {
+            get
+            {
+                return detectRadius;
+            }
+            set
+            {
+                detectRadius = value;
+            }
+        }
         public Vector2 PlayerPosition
         {
             get
@@ -101,7 +113,7 @@ namespace AIE_PIRATE_PROJECT
             position.Y += (float)y;
             foreach (Projectile can in projectiles)
             {
-                if (Vector2.Distance(can.spawnPosition, PlayerPosition) > 325f)
+                if (Vector2.Distance(can.spawnPosition, PlayerPosition) > can.CannonRange)
                 {
                     
                     projectiles.Remove(can);
