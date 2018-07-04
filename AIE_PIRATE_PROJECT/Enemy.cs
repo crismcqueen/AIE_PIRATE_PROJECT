@@ -16,11 +16,11 @@ namespace AIE_PIRATE_PROJECT
 {
     class Enemy
     {
-        Game1 game = null;
+        //Game1 game = null;
         private Vector2 enemyPosition;
         
         protected int health;
-        protected int speed= 5;
+        protected int speed;
         protected int radius;
         public float enemyRotation = 0;
         float enemyTurnSpeed = 1;
@@ -31,32 +31,17 @@ namespace AIE_PIRATE_PROJECT
 
         public Vector2 Position
         {
-            get
-            {
-                return enemyPosition;
-            }
-            set
-            {
-                enemyPosition = value;
-            }
+            get{return enemyPosition;}
+            set{enemyPosition = value;}
         }
         public int Health
         {
-            get
-            {
-                return health;
-            }
-            set
-            {
-                health = value;
-            }
+            get{return health;}
+            set{health = value;}
         }
         public int Radius
         {
-            get
-            {
-                return radius;
-            }
+            get{return radius;}
         }
         public Enemy(Vector2 newPos)
         {
