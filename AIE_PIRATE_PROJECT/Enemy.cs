@@ -22,7 +22,7 @@ namespace AIE_PIRATE_PROJECT
         protected int health;
         protected int speed= 5;
         protected int radius;
-        float enemyRotation = 0;
+        public float enemyRotation = 0;
         float enemyTurnSpeed = 1;
         float xSpeed = 0;
         float ySpeed = 0;
@@ -83,19 +83,25 @@ namespace AIE_PIRATE_PROJECT
 
             double x = (xSpeed * Math.Cos(enemyRotation)) - (ySpeed * Math.Sin(enemyRotation));
             double y = (xSpeed * Math.Sin(enemyRotation)) + (ySpeed * Math.Cos(enemyRotation));
+
+            //Vector2 velocity = new Vector2((float)(enemyTurnSpeed * Math.Sin(enemyRotation)), (float)(enemyTurnSpeed * Math.Cos(enemyRotation)));
+            enemyRotation = Angle(direction);
+
+            
         }
 
-       /*public static float Angle(Vector2 p_vector2)
+        public float Angle(Vector2 p_vector2)
         {
-            if (p_vector2.x < 0)
+            if (p_vector2.X < 0)
             {
-                return 360 - (Math.Atan2(p_vector2.x, p_vector2.y) * Math.Rad2Deg * -1);
+                return MathHelper.ToRadians(360 - ((float)Math.Atan2(p_vector2.X, p_vector2.Y))) - 1;
             }
             else
             {
-                return Math.Atan2(p_vector2.x, p_vector2.y) * Math.Rad2Deg;
-            } 
-        } */
+                return MathHelper.ToRadians((float) Math.Atan2(p_vector2.X, p_vector2.Y));
+            }
+        }
+
 
         private void ChasePlayer()
          {
@@ -136,7 +142,7 @@ namespace AIE_PIRATE_PROJECT
         
         public void Draw(SpriteBatch spriteBatch)
         {
-         
+            
         }
         
     }

@@ -15,3 +15,6 @@ obj/
 .vs/
 x84/
 x64/
+*.mgcontent
+*.exe
+*.pdb
