@@ -4,20 +4,20 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Fonts/Primitive.spritefont</File>
-    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Player/PSH.png</File>
-    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Player/PHS-2.png</File>
-    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Player/PHS-3.png</File>
-    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/GUI/Splash.png</File>
-    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/GUI/SkullHealth.png</File>
-    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Enemy/enemyShipDead.png</File>
-    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Enemy/enemyShipAlive.png</File>
-    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Misc/explosion2.png</File>
-    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Misc/explosion3.png</File>
-    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Misc/cannonBall.png</File>
-    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Misc/explosion1.png</File>
-    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Misc/SkullHealth.png</File>
-    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Misc/pirateSeaMap.tmx</File>
-    <File>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Misc/tiles_sheet.png</File>
+    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Fonts/Primitive.spritefont</File>
+    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Player/PSH.png</File>
+    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Player/PHS-2.png</File>
+    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Player/PHS-3.png</File>
+    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/GUI/Splash.png</File>
+    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/GUI/SkullHealth.png</File>
+    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Enemy/enemyShipDead.png</File>
+    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Enemy/enemyShipAlive.png</File>
+    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Misc/explosion2.png</File>
+    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Misc/explosion3.png</File>
+    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Misc/cannonBall.png</File>
+    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Misc/explosion1.png</File>
+    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Misc/SkullHealth.png</File>
+    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Misc/pirateSeaMap.tmx</File>
+    <File>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/Misc/tiles_sheet.png</File>
   </SourceFiles>
 </SourceFileCollection>
