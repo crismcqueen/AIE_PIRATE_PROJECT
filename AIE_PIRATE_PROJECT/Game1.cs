@@ -6,6 +6,8 @@ using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Graphics;
 using MonoGame.Utilities;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace AIE_PIRATE_PROJECT
 {
@@ -23,14 +25,14 @@ namespace AIE_PIRATE_PROJECT
     /// </summary>
     public class Game1 : Game
     {
-        
+        List<Enemy> enemies = new List<Enemy>();
         public static int tile =64;
         public static float meter = tile;
         public static Vector2 maxVelocity = new Vector2(meter * 20f, meter * 20f);
         private UI STATE = UI.STATE_TITLE;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
+        Texture2D goal;
         Texture2D playerSprite;
         Texture2D enemySprite;
         Texture2D enemyBossSprite; 
@@ -41,13 +43,19 @@ namespace AIE_PIRATE_PROJECT
         TiledMap seaMap;
         Camera2D cam;
         SpriteFont gameText;
+        TiledMapTileLayer collisionLayer;
+        public ArrayList allCollisionTiles = new ArrayList();
+        //public Sprite[,] levelGrid;
+        public int tileHeight = 0;
+        public int levelTileWidth = 0;
+        public int levelTileHeight = 0;
         int score = 0;
         int lives = 3;
         //private int ScreenY;
         //private int screenX;
 
 
-
+        //List<Enemy> enemies = new List<Enemy>();
         Player player = new Player();
         public Game1()
         {
@@ -56,8 +64,12 @@ namespace AIE_PIRATE_PROJECT
             //Screen res
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
-            graphics.PreferMultiSampling = true;
             
+            
+
+            
+            graphics.PreferMultiSampling = false;
+            graphics.SynchronizeWithVerticalRetrace = true;
 
         }
         public int ScreenY
@@ -101,7 +113,38 @@ namespace AIE_PIRATE_PROJECT
             gameText = Content.Load<SpriteFont>("Fonts/Primitive");
             seaMap = Content.Load<TiledMap>("Misc/pirateSeaMap");
             health = Content.Load<Texture2D>("GUI/SkullHealth");
-
+            goal = Content.Load<Texture2D>("Misc/chest");
+            foreach (TiledMapTileLayer layer in seaMap.TileLayers)
+            {
+                if (layer.Name == "Collision")
+                    collisionLayer = layer;
+            }
+            foreach (TiledMapObjectLayer layer in seaMap.ObjectLayers)
+            {
+                if (layer.Name == "Enemies")
+                {
+                    foreach (TiledMapObject obj in layer.Objects)
+                    {
+                        Enemy enemy = new Enemy(Vector2.Zero);
+                        enemy.Load(Content);
+                        enemy.Position = new Vector2(obj.Position.X, obj.Position.Y);
+                        enemies.Add(enemy);
+                    }
+                }
+                if (layer.Name == "Goal")
+                {
+                    TiledMapObject obj = layer.Objects[0];
+                    if (obj != null)
+                    {
+                        AnimatedTexture anim = new AnimatedTexture(Vector2.Zero, 0, 0.5f, 1);
+                        anim.Load(Content, "chest", 1, 1);
+                        //goal = new Sprite();
+                        //goal.Add(anim, 18, 24);
+                        //goal.position = new Vector2(obj.Position.X, obj.Position.Y);
+                    }
+                }
+                
+            }
             Enemy.enemies.Add(new enemyShip(new Vector2(100, 400)));
             Enemy.enemies.Add(new enemyBoss(new Vector2(300, 450)));
         }

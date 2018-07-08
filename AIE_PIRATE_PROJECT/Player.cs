@@ -12,6 +12,7 @@ namespace AIE_PIRATE_PROJECT
 {
     class Player
     {
+        Game1 game = null;
         public List<Projectile> projectiles = new List<Projectile>();
         
         private Vector2 position = new Vector2(100, 100);
