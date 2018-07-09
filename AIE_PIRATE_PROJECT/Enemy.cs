@@ -18,7 +18,7 @@ namespace AIE_PIRATE_PROJECT
     {
         Game1 game = null;
         private Vector2 enemyPosition;
-        
+        public Vector2 enemyOffset = new Vector2(0, 0);
         protected int health;
         protected int speed;
         protected int radius;
@@ -153,6 +153,7 @@ namespace AIE_PIRATE_PROJECT
         public enemyShip(Vector2 newPos) : base(newPos)
         {
             speed =4;
+            
         }
     }
     class enemyBoss : Enemy

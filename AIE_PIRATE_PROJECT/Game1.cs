@@ -34,7 +34,7 @@ namespace AIE_PIRATE_PROJECT
         SpriteBatch spriteBatch;
         Texture2D goal;
         Texture2D playerSprite;
-        Texture2D enemySprite;
+        Texture2D enemyShip;
         Texture2D enemyBossSprite; 
         Texture2D health;
         Texture2D splashScreen;
@@ -105,7 +105,7 @@ namespace AIE_PIRATE_PROJECT
             spriteBatch = new SpriteBatch(GraphicsDevice);
             //Sprite content
             playerSprite = Content.Load<Texture2D>("Player/PSH");
-            enemySprite = Content.Load<Texture2D>("Enemy/enemyShipAlive");
+            enemyShip = Content.Load<Texture2D>("Enemy/enemyShipAlive");
             enemyBossSprite = Content.Load<Texture2D>("Enemy/enemyShipDead");
             cannonballSprite = Content.Load<Texture2D>("Misc/cannonBall");
             health = Content.Load<Texture2D>("Misc/SkullHealth");
@@ -196,7 +196,7 @@ namespace AIE_PIRATE_PROJECT
                 Texture2D enemyDraw;
                 if (e.GetType() == typeof(enemyShip))
                 {
-                    enemyDraw = enemySprite;
+                    enemyDraw = enemyShip;
                 }
                 else
                 {

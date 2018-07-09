@@ -25,7 +25,7 @@ namespace AIE_PIRATE_PROJECT
         private float playerWind = 25.0f;
         private float playerDrift = 20.0f;
         private float playerTurnSpeed = 1;
-        public float playerRotation = 0;
+        public float playerRotation = 1.57f;
         private float detectRadius = 300;
         private float playerRadius = 20;
         //private bool playerAlive = true;
