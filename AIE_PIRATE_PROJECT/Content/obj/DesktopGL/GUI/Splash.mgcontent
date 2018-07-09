@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/GUI/Splash.png</SourceFile>
-  <SourceTime>2018-05-23T18:02:29.0533655+10:00</SourceTime>
-  <DestFile>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/bin/DesktopGL/GUI/Splash.xnb</DestFile>
-  <DestTime>2018-07-09T15:17:59.9482618+10:00</DestTime>
+  <SourceFile>C:/Users/Joel The Fantastic/OneDrive/Documents/Visual Studio 2017/Projects/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/GUI/Splash.png</SourceFile>
+  <SourceTime>2018-06-19T20:28:55.5132349+08:00</SourceTime>
+  <DestFile>C:/Users/Joel The Fantastic/OneDrive/Documents/Visual Studio 2017/Projects/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/bin/DesktopGL/GUI/Splash.xnb</DestFile>
+  <DestTime>2018-07-09T18:00:29.3341212+08:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2017-03-02T02:05:36+11:00</ImporterTime>
+  <ImporterTime>2017-03-01T23:05:36+08:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2017-03-02T02:05:36+11:00</ProcessorTime>
+  <ProcessorTime>2017-03-01T23:05:36+08:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>

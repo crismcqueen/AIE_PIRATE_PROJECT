@@ -50,7 +50,7 @@ namespace AIE_PIRATE_PROJECT
         public int levelTileWidth = 0;
         public int levelTileHeight = 0;
         int score = 0;
-        int lives = 3;
+        public int lives = 3;
         //private int ScreenY;
         //private int screenX;
 
@@ -179,6 +179,8 @@ namespace AIE_PIRATE_PROJECT
             // world space here
             spriteBatch.Begin(transformMatrix: cam.GetViewMatrix(), samplerState: SamplerState.PointClamp);
 
+            ShapeExtensions.DrawPoint(spriteBatch, Vector2.Zero, Color.Orange, 3);
+
             player.playerOffset = new Vector2(playerSprite.Width / 2, playerSprite.Height / 2);
             //spriteBatch.Draw(splashScreen, new Vector2(0, 0), Color.Silver);
 
@@ -190,7 +192,8 @@ namespace AIE_PIRATE_PROJECT
             }
             //spriteBatch.Draw(playerSprite, player.Position, Color.White);
             spriteBatch.Draw(playerSprite, player.PlayerPosition, null, Color.White, player.playerRotation, player.playerOffset, 1, SpriteEffects.None, 0);
-            
+            ShapeExtensions.DrawPoint(spriteBatch, player.PlayerPosition, Color.Orange, 3);
+
             foreach (Enemy e in Enemy.enemies)
             {
                 Texture2D enemyDraw;
@@ -202,7 +205,8 @@ namespace AIE_PIRATE_PROJECT
                 {
                     enemyDraw = enemyBossSprite;
                 }
-                spriteBatch.Draw(enemyDraw, e.Position, Color.White);
+                spriteBatch.Draw(enemyDraw, e.Position, null, Color.White, e.enemyRotation, new Vector2(enemyDraw.Width / 2, enemyDraw.Height / 2), 1, SpriteEffects.None, 1);
+                ShapeExtensions.DrawPoint(spriteBatch, e.Position, Color.Orange, 3);
 
             }
             

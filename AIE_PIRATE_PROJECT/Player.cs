@@ -161,6 +161,13 @@ namespace AIE_PIRATE_PROJECT
                 return forwardDirection;
             }
             
+            foreach (Enemy e in Enemy.enemies)
+            {
+                if ((PlayerPosition - e.Position).Length() < playerRadius + e.Radius)
+                {
+                    //hit
+                }
+            }
         }
         
         
