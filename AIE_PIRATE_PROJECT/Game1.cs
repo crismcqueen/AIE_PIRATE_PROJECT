@@ -158,8 +158,15 @@ namespace AIE_PIRATE_PROJECT
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            
-            player.Update(gameTime);
+            if (player != null)
+            {
+                player.Update(gameTime);
+                foreach (Enemy e in Enemy.enemies)
+                {
+                    e.Update(gameTime, player.PlayerPosition);
+                }
+            }
+                player.Update(gameTime);
             foreach (Enemy e in Enemy.enemies)
             {
                 e.Update(gameTime, player.PlayerPosition);
