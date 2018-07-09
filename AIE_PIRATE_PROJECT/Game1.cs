@@ -160,7 +160,7 @@ namespace AIE_PIRATE_PROJECT
                 Exit();
             if (player != null)
             {
-                player.Update(gameTime);
+                
                 foreach (Enemy e in Enemy.enemies)
                 {
                     e.Update(gameTime, player.PlayerPosition);

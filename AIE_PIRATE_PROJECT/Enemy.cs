@@ -152,7 +152,7 @@ namespace AIE_PIRATE_PROJECT
     {
         public enemyShip(Vector2 newPos) : base(newPos)
         {
-            speed =4;
+            speed =1;
             
         }
     }
@@ -160,7 +160,7 @@ namespace AIE_PIRATE_PROJECT
     {
         public enemyBoss(Vector2 newPos) : base(newPos)
         {
-            speed =4;
+            speed =2;
         }
     }
 }
