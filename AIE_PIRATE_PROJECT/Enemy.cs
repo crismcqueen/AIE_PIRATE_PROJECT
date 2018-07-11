@@ -23,6 +23,7 @@ namespace AIE_PIRATE_PROJECT
         private float speed;
         public int radius;
         public float enemyRotation = 0;
+        public int maxHealth;
         ///float enemyTurnSpeed = 0.3f;
         ///float xSpeed = 0;
         ///float ySpeed = 0;
@@ -35,12 +36,14 @@ namespace AIE_PIRATE_PROJECT
             set{enemyPosition = value;}
         }
 
-        public Enemy(Vector2 newPos, Texture2D texture, float speed)
+        public Enemy(Vector2 newPos, Texture2D texture, float speed, int health)
         {
             enemyPosition = newPos;
             this.texture = texture;
             this.speed = speed;
             radius = texture.Height / 2;
+            this.health = health;
+            maxHealth = health;
         }
 
         public void Update(GameTime gameTime, Player player)

@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Audio;
 
 
 namespace AIE_PIRATE_PROJECT
@@ -63,6 +64,10 @@ namespace AIE_PIRATE_PROJECT
             {
                 return position;
             }
+            set
+            {
+                position = value;
+            }
         }
 
         public void setX(float newX)
@@ -80,7 +85,7 @@ namespace AIE_PIRATE_PROJECT
         }
 
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, SoundEffectInstance cannon)
         {
             KeyboardState state = Keyboard.GetState();
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -135,6 +140,8 @@ namespace AIE_PIRATE_PROJECT
                 projectiles.Add(projectile);
                 timerDelay = attackDelay;
 
+                cannon.Stop();
+                cannon.Play();
             }
             
             if (state.IsKeyDown(Keys.D) == true && timerDelay <= 0)
@@ -143,6 +150,8 @@ namespace AIE_PIRATE_PROJECT
                 projectiles.Add(projectile);
                 timerDelay = attackDelay;
 
+                cannon.Stop();
+                cannon.Play();
             }
             Vector2 ForwardDirection(float rotationDirection)
             {

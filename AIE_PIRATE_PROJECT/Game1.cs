@@ -8,6 +8,7 @@ using MonoGame.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 
 namespace AIE_PIRATE_PROJECT
@@ -24,10 +25,14 @@ namespace AIE_PIRATE_PROJECT
     public class Game1 : Game
     {
         Song gameMusic;
+
+        SoundEffect cannon;
+        SoundEffectInstance cannonInstance;
+        
         public static int tile = 64;
         public static float meter = tile;
         public static Vector2 maxVelocity = new Vector2(meter * 20f, meter * 20f);
-        private UI STATE = UI.STATE_GAME;
+        private UI STATE = UI.STATE_TITLE;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Texture2D goal;
@@ -62,8 +67,8 @@ namespace AIE_PIRATE_PROJECT
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             //Screen res
-            graphics.PreferredBackBufferWidth = 1280;
-            graphics.PreferredBackBufferHeight = 720;
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 500;
 
 
 
@@ -72,7 +77,7 @@ namespace AIE_PIRATE_PROJECT
             graphics.SynchronizeWithVerticalRetrace = true;
 
         }
-        public int ScreenY
+        public int ScreenX
         {
             get
             {
@@ -80,7 +85,7 @@ namespace AIE_PIRATE_PROJECT
             }
         }
 
-        public int ScreenX
+        public int ScreenY
         {
             get
             {
@@ -101,7 +106,7 @@ namespace AIE_PIRATE_PROJECT
 
         protected override void LoadContent()
         {
-
+            splashScreen = Content.Load<Texture2D>("GUI/beachBG");
             spriteBatch = new SpriteBatch(GraphicsDevice);
             //Sprite content
             playerSprite = Content.Load<Texture2D>("Player/PSH");
@@ -115,10 +120,23 @@ namespace AIE_PIRATE_PROJECT
             health = Content.Load<Texture2D>("GUI/SkullHealth");
             goal = Content.Load<Texture2D>("Misc/chest");
             tiles = Content.Load<Texture2D>("Misc/tiles_sheet");
+
+            cannon = Content.Load<SoundEffect>("cannon");
+            cannonInstance = cannon.CreateInstance();
+
             gameMusic = Content.Load<Song>("Thunderchild_theme");
             MediaPlayer.Play(gameMusic);
 
             player = new Player(this);
+        }
+
+        private void Reset()
+        {
+            player.PlayerHealth = 3;
+            player.playerRotation = 0;
+            player.PlayerPosition = new Vector2(seaMap.WidthInPixels, seaMap.HeightInPixels) / 2;
+
+            enemies.Clear();
 
             for (int i = 0; i < 10; i++)
             {
@@ -126,15 +144,21 @@ namespace AIE_PIRATE_PROJECT
             }
         }
 
+
+
         private void TitleUpdate()
         {
-
+            if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+            {
+                Reset();
+                STATE = UI.STATE_GAME;
+            }
         }
 
         private void GameUpdate(GameTime gameTime)
         {
-            player.Update(gameTime);
-
+            player.Update(gameTime, cannonInstance);
+            
             List<Enemy> deaths = new List<Enemy>();
 
             foreach (Enemy e in enemies)
@@ -188,11 +212,11 @@ namespace AIE_PIRATE_PROJECT
             }
             if (rnd.Next(0, 5) == 0)
             {
-                enemies.Add(new Enemy(new Vector2(Xpos, Ypos), enemyBossSprite, 3));
+                enemies.Add(new Enemy(new Vector2(Xpos, Ypos), enemyBossSprite, 3, 3));
             }
             else
             {
-                enemies.Add(new Enemy(new Vector2(Xpos, Ypos), enemyShip, 2));
+                enemies.Add(new Enemy(new Vector2(Xpos, Ypos), enemyShip, 2, 1));
             }
         }
 
@@ -210,19 +234,31 @@ namespace AIE_PIRATE_PROJECT
             switch (STATE)
             {
                 case UI.STATE_TITLE:
+                    TitleUpdate();
                     break;
                 case UI.STATE_GAME:
                     GameUpdate(gameTime);
                     break;
                 case UI.STATE_END:
+                    EndUpdate();
                     break;
             }
             base.Update(gameTime);
         }
 
 
+        private void TitleDraw()
+        {
+            GraphicsDevice.Clear(Color.Tomato);
 
-        private void Draw_Game()
+            spriteBatch.Begin();
+            spriteBatch.Draw(splashScreen, Vector2.Zero, Color.White);
+            spriteBatch.DrawString(gameText, "Press enter to play", (new Vector2(ScreenX, ScreenY) - gameText.MeasureString("Press enter to play")) / 2, Color.DarkOrange);
+            spriteBatch.End();
+        }
+
+
+        private void GameDraw()
         {
             GraphicsDevice.Clear(new Color(46, 204, 113));
             GraphicsDevice.BlendState = BlendState.NonPremultiplied;
@@ -245,6 +281,8 @@ namespace AIE_PIRATE_PROJECT
             foreach (Enemy e in enemies)
             {
                 spriteBatch.Draw(e.texture, e.Position, null, Color.White, e.enemyRotation, new Vector2(e.texture.Width / 2, e.texture.Height / 2), 1, SpriteEffects.None, 1);
+                ShapeExtensions.DrawLine(spriteBatch, e.Position + new Vector2(18, -e.texture.Height / 1.5f), 44, 0, Color.Black, 6);
+                ShapeExtensions.DrawLine(spriteBatch, e.Position + new Vector2(20, -e.texture.Height / 1.5f), e.health * 40 / e.maxHealth, 0, Color.Green, 4);
             }
 
 
@@ -254,7 +292,7 @@ namespace AIE_PIRATE_PROJECT
             spriteBatch.DrawString(gameText, "Score: " + score, new Vector2(30, 30), Color.Black, 0, new Vector2(0, 0), 1 * 1.5f, SpriteEffects.None, 0);
             for (int i = 0; i < player.PlayerHealth; i++)
             {
-                spriteBatch.Draw(health, new Vector2(1280 - 80 - i * 64, 16), Color.White);
+                spriteBatch.Draw(health, new Vector2(ScreenX - (health.Width + 30) - (i * 64), 30), Color.White);
             }
             spriteBatch.End();
         }
@@ -265,9 +303,10 @@ namespace AIE_PIRATE_PROJECT
             switch (STATE)
             {
                 case UI.STATE_TITLE:
+                    TitleDraw();
                     break;
                 case UI.STATE_GAME:
-                    Draw_Game();
+                    GameDraw();
                     break;
                 case UI.STATE_END:
                     break;
