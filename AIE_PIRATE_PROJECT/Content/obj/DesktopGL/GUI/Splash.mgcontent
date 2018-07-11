@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/GUI/Splash.png</SourceFile>
-  <SourceTime>2018-06-12T09:04:44.3986052+10:00</SourceTime>
-  <DestFile>C:/Users/Sian/Documents/GitHub/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/bin/DesktopGL/GUI/Splash.xnb</DestFile>
-  <DestTime>2018-07-11T20:46:03.8511734+10:00</DestTime>
+  <SourceFile>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/GUI/Splash.png</SourceFile>
+  <SourceTime>2018-05-23T18:02:29.0533655+10:00</SourceTime>
+  <DestFile>C:/GIT/AIE_PIRATE/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/AIE_PIRATE_PROJECT/Content/bin/DesktopGL/GUI/Splash.xnb</DestFile>
+  <DestTime>2018-07-11T20:56:27.6022577+10:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-02T02:05:36+11:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

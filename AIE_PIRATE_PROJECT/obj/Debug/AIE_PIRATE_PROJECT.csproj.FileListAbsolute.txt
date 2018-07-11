@@ -189,3 +189,6 @@ C:\Users\Sian\Documents\GitHub\AIE_PIRATE_PROJECT\AIE_PIRATE_PROJECT\bin\Desktop
 C:\Users\Sian\Documents\GitHub\AIE_PIRATE_PROJECT\AIE_PIRATE_PROJECT\bin\DesktopGL\AnyCPU\Debug\Content\GUI\beachBG.xnb
 C:\Users\Sian\Documents\GitHub\AIE_PIRATE_PROJECT\AIE_PIRATE_PROJECT\bin\DesktopGL\AnyCPU\Debug\Content\GUI\loseGame.xnb
 C:\Users\Sian\Documents\GitHub\AIE_PIRATE_PROJECT\AIE_PIRATE_PROJECT\bin\DesktopGL\AnyCPU\Debug\Content\GUI\winPirate.xnb
+C:\GIT\AIE_PIRATE\AIE_PIRATE_PROJECT\AIE_PIRATE_PROJECT\AIE_PIRATE_PROJECT\bin\DesktopGL\AnyCPU\Debug\Content\GUI\beachBG.xnb
+C:\GIT\AIE_PIRATE\AIE_PIRATE_PROJECT\AIE_PIRATE_PROJECT\AIE_PIRATE_PROJECT\bin\DesktopGL\AnyCPU\Debug\Content\Thunderchild_theme.ogg
+C:\GIT\AIE_PIRATE\AIE_PIRATE_PROJECT\AIE_PIRATE_PROJECT\AIE_PIRATE_PROJECT\bin\DesktopGL\AnyCPU\Debug\Content\Thunderchild_theme.xnb
