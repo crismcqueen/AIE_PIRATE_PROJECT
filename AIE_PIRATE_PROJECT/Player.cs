@@ -14,7 +14,7 @@ namespace AIE_PIRATE_PROJECT
     {
         Game1 game = null;
         public List<Projectile> projectiles = new List<Projectile>();
-        
+
         private Vector2 position = new Vector2(100, 100);
        
         private int health = 3;
@@ -71,26 +71,26 @@ namespace AIE_PIRATE_PROJECT
             position.Y = newY;
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, List<Enemy> enemies)
         {
             KeyboardState state = Keyboard.GetState();
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             float xSpeed = 0;
             float ySpeed = 0;
             timerDelay -= dt;
-            if (state.IsKeyDown(Keys.Up) == true)
+            if (state.IsKeyDown(Keys.Up))
             {
                 ySpeed -= playerSpeed * dt;
             }
-            else if (state.IsKeyDown(Keys.Up) == false)
+            else if (!state.IsKeyDown(Keys.Up))
             {
                 ySpeed -= playerWind * dt;
             }
-            if (state.IsKeyDown(Keys.Down) == true)
+            if (state.IsKeyDown(Keys.Down))
             {
                 ySpeed = 0;
             }
-            if (state.IsKeyDown(Keys.Left) == true)
+            if (state.IsKeyDown(Keys.Left))
             {
                 playerRotation -= playerTurnSpeed * dt;
             }
@@ -123,10 +123,6 @@ namespace AIE_PIRATE_PROJECT
                 
                 //can.isAlive = false;
                 can.UpdateBullet(dt);
-                
-
-
-
             }                       
 
 
@@ -161,7 +157,7 @@ namespace AIE_PIRATE_PROJECT
                 return forwardDirection;
             }
             
-            foreach (Enemy e in Enemy.enemies)
+            foreach (Enemy e in enemies)
             {
                 if ((PlayerPosition - e.Position).Length() < playerRadius + e.Radius)
                 {

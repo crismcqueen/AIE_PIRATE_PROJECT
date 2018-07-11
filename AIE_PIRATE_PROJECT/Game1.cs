@@ -25,7 +25,6 @@ namespace AIE_PIRATE_PROJECT
     /// </summary>
     public class Game1 : Game
     {
-        List<Enemy> enemies = new List<Enemy>();
         public static int tile =64;
         public static float meter = tile;
         public static Vector2 maxVelocity = new Vector2(meter * 20f, meter * 20f);
@@ -54,8 +53,9 @@ namespace AIE_PIRATE_PROJECT
         //private int ScreenY;
         //private int screenX;
 
+        List<Enemy> enemies = new List<Enemy>();
 
-        //List<Enemy> enemies = new List<Enemy>();
+
         Player player = new Player();
         public Game1()
         {
@@ -125,9 +125,15 @@ namespace AIE_PIRATE_PROJECT
                 {
                     foreach (TiledMapObject obj in layer.Objects)
                     {
-                        Enemy enemy = new Enemy(Vector2.Zero);
-                        enemy.Load(Content);
-                        enemy.Position = new Vector2(obj.Position.X, obj.Position.Y);
+                        Enemy enemy = new Enemy(new Vector2(obj.Position.X, obj.Position.Y), enemyShip, 2);
+                        enemies.Add(enemy);
+                    }
+                }
+                if (layer.Name == "EnemyBoss")
+                {
+                    foreach (TiledMapObject obj in layer.Objects)
+                    {
+                        Enemy enemy = new Enemy(new Vector2(obj.Position.X, obj.Position.Y), enemyBossSprite, 3);
                         enemies.Add(enemy);
                     }
                 }
@@ -145,8 +151,6 @@ namespace AIE_PIRATE_PROJECT
                 }
                 
             }
-            Enemy.enemies.Add(new enemyShip(new Vector2(100, 400)));
-            Enemy.enemies.Add(new enemyBoss(new Vector2(300, 450)));
         }
 
 
@@ -161,13 +165,13 @@ namespace AIE_PIRATE_PROJECT
             if (player != null)
             {
                 
-                foreach (Enemy e in Enemy.enemies)
+                foreach (Enemy e in enemies)
                 {
                     e.Update(gameTime, player.PlayerPosition);
                 }
             }
-                player.Update(gameTime);
-            foreach (Enemy e in Enemy.enemies)
+                player.Update(gameTime, enemies);
+            foreach (Enemy e in enemies)
             {
                 e.Update(gameTime, player.PlayerPosition);
             }
@@ -201,20 +205,10 @@ namespace AIE_PIRATE_PROJECT
             spriteBatch.Draw(playerSprite, player.PlayerPosition, null, Color.White, player.playerRotation, player.playerOffset, 1, SpriteEffects.None, 0);
             ShapeExtensions.DrawPoint(spriteBatch, player.PlayerPosition, Color.Orange, 3);
 
-            foreach (Enemy e in Enemy.enemies)
+            foreach (Enemy e in enemies)
             {
-                Texture2D enemyDraw;
-                if (e.GetType() == typeof(enemyShip))
-                {
-                    enemyDraw = enemyShip;
-                }
-                else
-                {
-                    enemyDraw = enemyBossSprite;
-                }
-                spriteBatch.Draw(enemyDraw, e.Position, null, Color.White, e.enemyRotation, new Vector2(enemyDraw.Width / 2, enemyDraw.Height / 2), 1, SpriteEffects.None, 1);
+                spriteBatch.Draw(e.texture, e.Position, null, Color.White, e.enemyRotation, new Vector2(e.texture.Width / 2, e.texture.Height / 2), 1, SpriteEffects.None, 1);
                 ShapeExtensions.DrawPoint(spriteBatch, e.Position, Color.Orange, 3);
-
             }
             
             
