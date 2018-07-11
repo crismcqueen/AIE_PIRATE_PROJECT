@@ -112,6 +112,11 @@ namespace AIE_PIRATE_PROJECT
             // calculate the player's new position
             position.X += (float)x;
             position.Y += (float)y;
+
+            position.X = Math.Max(64 + playerRadius, Math.Min(64 * 24 - playerRadius, position.X));
+            position.Y = Math.Max(64 + playerRadius, Math.Min(64 * 24 - playerRadius, position.Y));
+
+
             foreach (Projectile can in projectiles)
             {
                 if (Vector2.Distance(can.spawnPosition, PlayerPosition) > can.CannonRange)
@@ -159,7 +164,7 @@ namespace AIE_PIRATE_PROJECT
             
             foreach (Enemy e in enemies)
             {
-                if ((PlayerPosition - e.Position).Length() < playerRadius + e.Radius)
+                if ((PlayerPosition - e.Position).Length() < playerRadius + e.radius)
                 {
                     //hit
                 }

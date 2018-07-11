@@ -38,6 +38,7 @@ namespace AIE_PIRATE_PROJECT
         Texture2D health;
         Texture2D splashScreen;
         Texture2D cannonballSprite;
+        Texture2D tiles;
         TiledMapRenderer mapRenderer;
         TiledMap seaMap;
         Camera2D cam;
@@ -114,6 +115,7 @@ namespace AIE_PIRATE_PROJECT
             seaMap = Content.Load<TiledMap>("Misc/pirateSeaMap");
             health = Content.Load<Texture2D>("GUI/SkullHealth");
             goal = Content.Load<Texture2D>("Misc/chest");
+            tiles = Content.Load<Texture2D>("Misc/tiles_sheet");
             foreach (TiledMapTileLayer layer in seaMap.TileLayers)
             {
                 if (layer.Name == "Collision")
@@ -185,6 +187,18 @@ namespace AIE_PIRATE_PROJECT
             GraphicsDevice.Clear(Color.LightBlue);
             GraphicsDevice.BlendState = BlendState.NonPremultiplied;
 
+            spriteBatch.Begin();
+
+            for (int r = 0; r <= ScreenY / 64; r++)
+            {
+                for (int c = 0; c <= ScreenX / 64; c++)
+                {
+                    spriteBatch.Draw(tiles, new Vector2(64 * (r), 64 * (c)), new Rectangle(384, 64, 64, 64), Color.White);
+                }
+            }
+
+            spriteBatch.End();
+
             mapRenderer.Draw(seaMap, cam.GetViewMatrix());
 
             // world space here
@@ -215,7 +229,7 @@ namespace AIE_PIRATE_PROJECT
             spriteBatch.End();
             spriteBatch.Begin();
             
-            spriteBatch.DrawString(gameText, "SCORE " + score, new Vector2(30, 30), Color.Black, 0, new Vector2(0, 0), 1 * 1.5f, SpriteEffects.None, 0);
+            spriteBatch.DrawString(gameText, Convert.ToString(player.PlayerPosition), new Vector2(30, 30), Color.Black, 0, new Vector2(0, 0), 1 * 1.5f, SpriteEffects.None, 0);
             for (int i = 0; i < lives; i++)
             {
                 spriteBatch.Draw(health, new Vector2(1280 - 80 - i * 64, 16), Color.White);

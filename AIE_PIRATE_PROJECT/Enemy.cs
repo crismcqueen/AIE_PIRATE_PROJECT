@@ -21,9 +21,9 @@ namespace AIE_PIRATE_PROJECT
         public Vector2 enemyOffset = new Vector2(0, 0);
         protected int health;
         private float speed;
-        protected int radius;
+        public int radius;
         public float enemyRotation = 0;
-        float enemyTurnSpeed = 1;
+        ///float enemyTurnSpeed = 0.3f;
         ///float xSpeed = 0;
         ///float ySpeed = 0;
         public Player GetPlayer { get; set; }
@@ -39,16 +39,13 @@ namespace AIE_PIRATE_PROJECT
             get{return health;}
             set{health = value;}
         }
-        public int Radius
-        {
-            get{return radius;}
-        }
 
         public Enemy(Vector2 newPos, Texture2D texture, float speed)
         {
             enemyPosition = newPos;
             this.texture = texture;
             this.speed = speed;
+            radius = texture.Height / 2;
         }
 
         public void Update(GameTime gameTime, Vector2 playerPosition)
@@ -56,11 +53,17 @@ namespace AIE_PIRATE_PROJECT
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             Vector2 direction = playerPosition - enemyPosition;
+
             direction.Normalize();
+
             Vector2 enemyVelocity = direction * speed * Game1.maxVelocity * dt;
 
             enemyPosition += enemyVelocity * dt;
+
             enemyRotation = direction.ToAngle();
+
+            enemyPosition.X = Math.Max(64, Math.Min(64 * 24, enemyPosition.X));
+            enemyPosition.Y = Math.Max(64, Math.Min(64 * 24, enemyPosition.Y));
         }       
     }
 }
