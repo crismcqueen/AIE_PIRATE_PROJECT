@@ -144,6 +144,8 @@ namespace AIE_PIRATE_PROJECT
             {
                 AddEnemy();
             }
+
+            score = 0;
         }
 
 
