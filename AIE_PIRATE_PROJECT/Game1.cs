@@ -8,23 +8,21 @@ using MonoGame.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework.Media;
 
 namespace AIE_PIRATE_PROJECT
 {
     enum UI
     {
-     STATE_TITLE,
-     STATE_GAME,
-     STATE_END
+        STATE_TITLE,
+        STATE_GAME,
+        STATE_END
     }
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
     public class Game1 : Game
     {
-        Song gameMusic;
-        public static int tile =64;
+        public static int tile = 64;
         public static float meter = tile;
         public static Vector2 maxVelocity = new Vector2(meter * 20f, meter * 20f);
         private UI STATE = UI.STATE_GAME;
@@ -33,7 +31,7 @@ namespace AIE_PIRATE_PROJECT
         Texture2D goal;
         Texture2D playerSprite;
         Texture2D enemyShip;
-        Texture2D enemyBossSprite; 
+        Texture2D enemyBossSprite;
         Texture2D health;
         Texture2D splashScreen;
         Texture2D cannonballSprite;
@@ -43,6 +41,7 @@ namespace AIE_PIRATE_PROJECT
         Camera2D cam;
         SpriteFont gameText;
         public ArrayList allCollisionTiles = new ArrayList();
+        Random rnd = new Random();
         //public Sprite[,] levelGrid;
         public int tileHeight = 0;
         public int levelTileWidth = 0;
@@ -63,10 +62,10 @@ namespace AIE_PIRATE_PROJECT
             //Screen res
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
-            
-            
 
-            
+
+
+
             graphics.PreferMultiSampling = false;
             graphics.SynchronizeWithVerticalRetrace = true;
 
@@ -115,12 +114,12 @@ namespace AIE_PIRATE_PROJECT
             goal = Content.Load<Texture2D>("Misc/chest");
             tiles = Content.Load<Texture2D>("Misc/tiles_sheet");
 
-            gameMusic = Content.Load<Song>("Thunderchild_theme");
-            MediaPlayer.Play(gameMusic);
-
-
-            enemies.Add(new Enemy(new Vector2(1000, 1000), enemyShip, 3));
             player = new Player(this);
+
+            for (int i = 0; i < 10; i++)
+            {
+                AddEnemy();
+            }
         }
 
         private void TitleUpdate()
@@ -148,7 +147,49 @@ namespace AIE_PIRATE_PROJECT
             }
             deaths.Clear();
 
+            if (enemies.Count < 15)
+            {
+                AddEnemy();
+            }
+
             cam.LookAt(player.PlayerPosition);
+        }
+
+        private void AddEnemy()
+        {
+            int outerLowerX = 64;
+            int innerLowerX = Math.Max(outerLowerX, (int)Math.Ceiling(player.PlayerPosition.X) - (ScreenX / 2)) + 70;
+            int outerUpperX = 1536;
+            int innerUpperX = Math.Min(outerUpperX, (int)Math.Ceiling(player.PlayerPosition.X) + (ScreenX / 2)) + 70;
+
+            int outerLowerY = 64;
+            int innerLowerY = Math.Max(outerLowerY, (int)Math.Ceiling(player.PlayerPosition.Y) - (ScreenY / 2)) - 70;
+            int outerUpperY = 1536;
+            int innerUpperY = Math.Min(outerUpperY, (int)Math.Ceiling(player.PlayerPosition.Y) + (ScreenY / 2)) + 70;
+
+            int maxXVal = (outerUpperY - outerLowerY) - (innerUpperY - innerLowerY);
+            int maxYVal = (outerUpperY - outerLowerY) - (innerUpperY - innerLowerY);
+
+            int Xpos = rnd.Next(maxXVal) + outerLowerX;
+            int Ypos = rnd.Next(maxYVal) + outerLowerY;
+
+            if (Xpos > innerLowerX)
+            {
+                Xpos += innerUpperX - innerLowerX;
+            }
+
+            if (Ypos > innerLowerY)
+            {
+                Ypos += innerUpperY - innerLowerY;
+            }
+            if (rnd.Next(0, 5) == 0)
+            {
+                enemies.Add(new Enemy(new Vector2(Xpos, Ypos), enemyBossSprite, 3));
+            }
+            else
+            {
+                enemies.Add(new Enemy(new Vector2(Xpos, Ypos), enemyShip, 2));
+            }
         }
 
         private void EndUpdate()
@@ -191,7 +232,7 @@ namespace AIE_PIRATE_PROJECT
             //spriteBatch.Draw(splashScreen, new Vector2(0, 0), Color.Silver);
 
             foreach (Projectile can in player.projectiles)
-            { 
+            {
                 spriteBatch.Draw(cannonballSprite, can.CannonPosition, null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, 0);
             }
             //spriteBatch.Draw(playerSprite, player.Position, Color.White);
@@ -232,6 +273,5 @@ namespace AIE_PIRATE_PROJECT
             base.Draw(gameTime);
         }
     }
-    
-}
 
+}

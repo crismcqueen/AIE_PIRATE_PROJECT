@@ -197,3 +197,4 @@ C:\Users\Joel The Fantastic\OneDrive\Documents\Visual Studio 2017\Projects\AIE_P
 C:\Users\Joel The Fantastic\OneDrive\Documents\Visual Studio 2017\Projects\AIE_PIRATE_PROJECT\AIE_PIRATE_PROJECT\bin\DesktopGL\AnyCPU\Debug\Content\GUI\winPirate.xnb
 C:\Users\Joel The Fantastic\OneDrive\Documents\Visual Studio 2017\Projects\AIE_PIRATE_PROJECT\AIE_PIRATE_PROJECT\bin\DesktopGL\AnyCPU\Debug\Content\Thunderchild_theme.ogg
 C:\Users\Joel The Fantastic\OneDrive\Documents\Visual Studio 2017\Projects\AIE_PIRATE_PROJECT\AIE_PIRATE_PROJECT\bin\DesktopGL\AnyCPU\Debug\Content\Thunderchild_theme.xnb
+C:\Users\Joel The Fantastic\OneDrive\Documents\Visual Studio 2017\Projects\AIE_PIRATE_PROJECT\AIE_PIRATE_PROJECT\bin\DesktopGL\AnyCPU\Debug\Content\cannon.xnb
