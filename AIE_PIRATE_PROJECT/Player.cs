@@ -8,12 +8,15 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 
+
 namespace AIE_PIRATE_PROJECT
 {
     public class Player
     {
         Game1 game = null;
         public List<Projectile> projectiles = new List<Projectile>();
+
+     
 
         private Vector2 position = new Vector2(100, 100);
        
