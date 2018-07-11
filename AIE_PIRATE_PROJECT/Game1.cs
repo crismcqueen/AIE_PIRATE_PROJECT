@@ -41,6 +41,7 @@ namespace AIE_PIRATE_PROJECT
         Texture2D enemyBossSprite;
         Texture2D health;
         Texture2D splashScreen;
+        Texture2D endScreen;
         Texture2D cannonballSprite;
         Texture2D tiles;
         TiledMapRenderer mapRenderer;
@@ -107,6 +108,7 @@ namespace AIE_PIRATE_PROJECT
         protected override void LoadContent()
         {
             splashScreen = Content.Load<Texture2D>("GUI/beachBG");
+            endScreen = Content.Load<Texture2D>("GUI/loseGame");
             spriteBatch = new SpriteBatch(GraphicsDevice);
             //Sprite content
             playerSprite = Content.Load<Texture2D>("Player/PSH");
@@ -180,6 +182,11 @@ namespace AIE_PIRATE_PROJECT
                 AddEnemy();
             }
 
+            if (player.PlayerHealth <= 0)
+            {
+                STATE = UI.STATE_END;
+            }
+
             cam.LookAt(player.PlayerPosition);
         }
 
@@ -222,7 +229,7 @@ namespace AIE_PIRATE_PROJECT
 
         private void EndUpdate()
         {
-
+            TitleUpdate();
         }
 
 
@@ -249,7 +256,7 @@ namespace AIE_PIRATE_PROJECT
 
         private void TitleDraw()
         {
-            GraphicsDevice.Clear(Color.Tomato);
+            GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
             spriteBatch.Draw(splashScreen, Vector2.Zero, Color.White);
@@ -298,6 +305,18 @@ namespace AIE_PIRATE_PROJECT
         }
 
 
+        private void EndDraw()
+        {
+            GraphicsDevice.Clear(Color.Black);
+
+            spriteBatch.Begin();
+            spriteBatch.Draw(endScreen, Vector2.Zero, Color.SteelBlue);
+            spriteBatch.DrawString(gameText, "You Got " + score + " points!", (new Vector2(ScreenX, ScreenY) - gameText.MeasureString("You Got " + score + " points!")) / 2, Color.White);
+            spriteBatch.DrawString(gameText, "Press enter to play again", (new Vector2(ScreenX, ScreenY + gameText.MeasureString("Press enter to play again").Y * 3) - gameText.MeasureString("Press enter to play again")) / 2, Color.White);
+            spriteBatch.End();
+        }
+
+
         protected override void Draw(GameTime gameTime)
         {
             switch (STATE)
@@ -309,6 +328,7 @@ namespace AIE_PIRATE_PROJECT
                     GameDraw();
                     break;
                 case UI.STATE_END:
+                    EndDraw();
                     break;
             }
 
