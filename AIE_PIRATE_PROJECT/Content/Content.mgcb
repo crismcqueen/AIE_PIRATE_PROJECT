@@ -230,3 +230,9 @@
 /processorParam:TextureFormat=Color
 /build:GUI/winPirate.png
 
+#begin Thunderchild_theme.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Thunderchild_theme.ogg
+
