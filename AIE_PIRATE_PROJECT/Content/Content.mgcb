@@ -165,11 +165,6 @@
 /processorParam:TextureFormat=Color
 /build:Misc/SkullHealth.png
 
-#begin Misc/pirateSeaMap.tmx
-/importer:TiledMapImporter
-/processor:TiledMapProcessor
-/build:Misc/pirateSeaMap.tmx
-
 #begin Misc/tiles_sheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -193,4 +188,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Misc/chest.png
+
+#begin Misc/pirateSeaMap.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:Misc/pirateSeaMap.tmx
 

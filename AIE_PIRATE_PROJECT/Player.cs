@@ -161,13 +161,19 @@ namespace AIE_PIRATE_PROJECT
 
                 return forwardDirection;
             }
-            
+
+            List<Enemy> deaths = new List<Enemy>();
             foreach (Enemy e in enemies)
             {
                 if ((PlayerPosition - e.Position).Length() < playerRadius + e.radius)
                 {
-                    //hit
+                    PlayerHealth--;
+                    deaths.Add(e);
                 }
+            }
+            foreach (Enemy e in deaths)
+            {
+                enemies.Remove(e);
             }
         }
         
