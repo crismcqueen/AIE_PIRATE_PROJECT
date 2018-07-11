@@ -35,3 +35,5 @@ AIE_PIRATE_PROJECT/Content/obj/DesktopGL/Misc/cannonBall.mgcontent
 AIE_PIRATE_PROJECT/Content/obj/DesktopGL/GUI/Splash.mgcontent
 AIE_PIRATE_PROJECT/Content/obj/DesktopGL/GUI/SkullHealth.mgcontent
 AIE_PIRATE_PROJECT/Content/obj/DesktopGL/Fonts/Primitive.mgcontent
+*.mgcontent
+*.mgcontent
