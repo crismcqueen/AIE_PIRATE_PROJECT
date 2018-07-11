@@ -15,9 +15,7 @@ namespace AIE_PIRATE_PROJECT
     {
      STATE_TITLE,
      STATE_GAME,
-     STATE_PAUSE,
-     STATE_END,
-     STATE_OPTIONS
+     STATE_END
     }
     /// <summary>
     /// This is the main type for your game.
@@ -147,11 +145,6 @@ namespace AIE_PIRATE_PROJECT
             cam.LookAt(player.PlayerPosition);
         }
 
-        private void PauseUpdate()
-        {
-
-        }
-
         private void EndUpdate()
         {
 
@@ -169,8 +162,6 @@ namespace AIE_PIRATE_PROJECT
                     break;
                 case UI.STATE_GAME:
                     GameUpdate(gameTime);
-                    break;
-                case UI.STATE_PAUSE:
                     break;
                 case UI.STATE_END:
                     break;
@@ -226,8 +217,6 @@ namespace AIE_PIRATE_PROJECT
                     break;
                 case UI.STATE_GAME:
                     Draw_Game();
-                    break;
-                case UI.STATE_PAUSE:
                     break;
                 case UI.STATE_END:
                     break;
