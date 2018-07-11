@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace AIE_PIRATE_PROJECT
 {
-    class Player
+    public class Player
     {
         Game1 game = null;
         public List<Projectile> projectiles = new List<Projectile>();
@@ -71,7 +71,13 @@ namespace AIE_PIRATE_PROJECT
             position.Y = newY;
         }
 
-        public void Update(GameTime gameTime, List<Enemy> enemies)
+        public Player(Game1 game)
+        {
+            this.game = game;
+        }
+
+
+        public void Update(GameTime gameTime)
         {
             KeyboardState state = Keyboard.GetState();
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -116,21 +122,6 @@ namespace AIE_PIRATE_PROJECT
             position.X = Math.Max(64 + playerRadius, Math.Min(64 * 24 - playerRadius, position.X));
             position.Y = Math.Max(64 + playerRadius, Math.Min(64 * 24 - playerRadius, position.Y));
 
-
-            foreach (Projectile can in projectiles)
-            {
-                if (Vector2.Distance(can.spawnPosition, PlayerPosition) > can.CannonRange)
-                {
-                    
-                    projectiles.Remove(can);
-                    break;
-                }
-                
-                //can.isAlive = false;
-                can.UpdateBullet(dt);
-            }                       
-
-
             //Vector2 playerDirection = new Vector2(-(float)Math.Sin(playerRotation), (float)Math.Cos(playerRotation));
             //playerDirection.Normalize();
             // shoot a bullet 
@@ -162,24 +153,43 @@ namespace AIE_PIRATE_PROJECT
                 return forwardDirection;
             }
 
-            List<Enemy> deaths = new List<Enemy>();
-            foreach (Enemy e in enemies)
+            List<Projectile> pDeaths = new List<Projectile>();
+            foreach (Projectile can in projectiles)
             {
+                can.UpdateBullet(dt, game);
+
+                if (!can.isAlive)
+                {
+                    pDeaths.Add(can);
+                }
+            }
+            foreach (Projectile p in pDeaths)
+            {
+                projectiles.Remove(p);
+            }
+            pDeaths.Clear();
+
+            List<Enemy> eDeaths = new List<Enemy>();
+            foreach (Enemy e in game.enemies)
+            {
+                if (e.health <= 0)
+                {
+                    eDeaths.Add(e);
+                    game.score++;
+                    break;
+                }
+
                 if ((PlayerPosition - e.Position).Length() < playerRadius + e.radius)
                 {
                     PlayerHealth--;
-                    deaths.Add(e);
+                    eDeaths.Add(e);
                 }
             }
-            foreach (Enemy e in deaths)
+            foreach (Enemy e in eDeaths)
             {
-                enemies.Remove(e);
+                game.enemies.Remove(e);
             }
+            eDeaths.Clear();
         }
-        
-        
-
     }
-   
-
 }

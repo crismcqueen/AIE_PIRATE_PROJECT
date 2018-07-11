@@ -14,12 +14,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace AIE_PIRATE_PROJECT
 {
-    class Enemy
+    public class Enemy
     {
         Game1 game = null;
         private Vector2 enemyPosition;
         public Vector2 enemyOffset = new Vector2(0, 0);
-        protected int health;
+        public int health = 1;
         private float speed;
         public int radius;
         public float enemyRotation = 0;
@@ -34,11 +34,6 @@ namespace AIE_PIRATE_PROJECT
             get{return enemyPosition;}
             set{enemyPosition = value;}
         }
-        public int Health
-        {
-            get{return health;}
-            set{health = value;}
-        }
 
         public Enemy(Vector2 newPos, Texture2D texture, float speed)
         {
@@ -48,11 +43,11 @@ namespace AIE_PIRATE_PROJECT
             radius = texture.Height / 2;
         }
 
-        public void Update(GameTime gameTime, Vector2 playerPosition)
+        public void Update(GameTime gameTime, Player player)
         {
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            Vector2 direction = playerPosition - enemyPosition;
+            Vector2 direction = player.PlayerPosition - enemyPosition;
 
             direction.Normalize();
 
@@ -64,7 +59,7 @@ namespace AIE_PIRATE_PROJECT
 
             enemyPosition.X = Math.Max(64, Math.Min(64 * 24, enemyPosition.X));
             enemyPosition.Y = Math.Max(64, Math.Min(64 * 24, enemyPosition.Y));
-        }       
+        }
     }
 }
 

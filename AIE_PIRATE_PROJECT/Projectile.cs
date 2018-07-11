@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AIE_PIRATE_PROJECT
 {
-    class Projectile
+    public class Projectile
     {
         
         //Game1 Game = null;
@@ -24,7 +24,8 @@ namespace AIE_PIRATE_PROJECT
         private bool cannonCollided = false;
         private int cannonRange = 250;
         private bool cannonMissed = true;
-        public bool isAlive = false;
+        public bool isAlive = true;
+
         public Projectile(Vector2 position, Vector2 direction)
         {
             cannonVelocity = direction * cannonSpeed;
@@ -64,12 +65,19 @@ namespace AIE_PIRATE_PROJECT
         }
         
         
-        public void UpdateBullet(float deltaTime)
+        public void UpdateBullet(float deltaTime, Game1 game)
         {
             cannonPosition += cannonVelocity * deltaTime;
 
-           
-            
+            List<Enemy> deaths = new List<Enemy>();
+            foreach (Enemy e in game.enemies)
+            {
+                if ((cannonPosition - e.Position).Length() < Radius + e.radius)
+                {
+                    isAlive = false;
+                    e.health--;
+                }
+            }
         }
     }
 }

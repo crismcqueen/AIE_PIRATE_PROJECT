@@ -8,7 +8,6 @@ using MonoGame.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework.Media;
 
 namespace AIE_PIRATE_PROJECT
 {
@@ -17,14 +16,14 @@ namespace AIE_PIRATE_PROJECT
      STATE_TITLE,
      STATE_GAME,
      STATE_PAUSE,
-     STATE_END
+     STATE_END,
+     STATE_OPTIONS
     }
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
     public class Game1 : Game
     {
-        Song gameMusic;
         public static int tile =64;
         public static float meter = tile;
         public static Vector2 maxVelocity = new Vector2(meter * 20f, meter * 20f);
@@ -43,22 +42,20 @@ namespace AIE_PIRATE_PROJECT
         TiledMap seaMap;
         Camera2D cam;
         SpriteFont gameText;
-        TiledMapTileLayer collisionLayer;
         public ArrayList allCollisionTiles = new ArrayList();
         //public Sprite[,] levelGrid;
         public int tileHeight = 0;
         public int levelTileWidth = 0;
         public int levelTileHeight = 0;
-        int score = 0;
+        public int score = 0;
         public int lives = 3;
         //private int ScreenY;
         //private int screenX;
 
+        public List<Enemy> enemies = new List<Enemy>();
 
-        List<Enemy> enemies = new List<Enemy>();
+        public Player player;
 
-
-        Player player = new Player();
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -118,8 +115,8 @@ namespace AIE_PIRATE_PROJECT
             goal = Content.Load<Texture2D>("Misc/chest");
             tiles = Content.Load<Texture2D>("Misc/tiles_sheet");
 
-            gameMusic = Content.Load<Song>("Thunderchild_theme");
-            MediaPlayer.Play(gameMusic);
+            enemies.Add(new Enemy(new Vector2(1000, 1000), enemyShip, 3));
+            player = new Player(this);
         }
 
         private void TitleUpdate()
@@ -129,11 +126,24 @@ namespace AIE_PIRATE_PROJECT
 
         private void GameUpdate(GameTime gameTime)
         {
-            player.Update(gameTime, enemies);
+            player.Update(gameTime);
+
+            List<Enemy> deaths = new List<Enemy>();
+
             foreach (Enemy e in enemies)
             {
-                e.Update(gameTime, player.PlayerPosition);
+                e.Update(gameTime, player);
+                if (e.health <= 0)
+                {
+                    deaths.Add(e);
+                }
             }
+            foreach (Enemy e in deaths)
+            {
+                enemies.Remove(e);
+            }
+            deaths.Clear();
+
             cam.LookAt(player.PlayerPosition);
         }
 
@@ -169,7 +179,8 @@ namespace AIE_PIRATE_PROJECT
         }
 
 
-        protected override void Draw(GameTime gameTime)
+
+        private void Draw_Game()
         {
             GraphicsDevice.Clear(new Color(46, 204, 113));
             GraphicsDevice.BlendState = BlendState.NonPremultiplied;
@@ -182,11 +193,9 @@ namespace AIE_PIRATE_PROJECT
             player.playerOffset = new Vector2(playerSprite.Width / 2, playerSprite.Height / 2);
             //spriteBatch.Draw(splashScreen, new Vector2(0, 0), Color.Silver);
 
-            spriteBatch.DrawString(gameText, "test press escape to exit", new Vector2(100, 100), Color.DarkRed, 0, new Vector2(0, 0), 1 * 3, SpriteEffects.None, 0);
             foreach (Projectile can in player.projectiles)
-            {
+            { 
                 spriteBatch.Draw(cannonballSprite, can.CannonPosition, null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, 0);
-
             }
             //spriteBatch.Draw(playerSprite, player.Position, Color.White);
             spriteBatch.Draw(playerSprite, player.PlayerPosition, null, Color.White, player.playerRotation, player.playerOffset, 1, SpriteEffects.None, 0);
@@ -195,17 +204,35 @@ namespace AIE_PIRATE_PROJECT
             {
                 spriteBatch.Draw(e.texture, e.Position, null, Color.White, e.enemyRotation, new Vector2(e.texture.Width / 2, e.texture.Height / 2), 1, SpriteEffects.None, 1);
             }
-            
-            
+
+
             spriteBatch.End();
             spriteBatch.Begin();
-            
+
             spriteBatch.DrawString(gameText, "Score: " + score, new Vector2(30, 30), Color.Black, 0, new Vector2(0, 0), 1 * 1.5f, SpriteEffects.None, 0);
             for (int i = 0; i < player.PlayerHealth; i++)
             {
                 spriteBatch.Draw(health, new Vector2(1280 - 80 - i * 64, 16), Color.White);
             }
             spriteBatch.End();
+        }
+
+
+        protected override void Draw(GameTime gameTime)
+        {
+            switch (STATE)
+            {
+                case UI.STATE_TITLE:
+                    break;
+                case UI.STATE_GAME:
+                    Draw_Game();
+                    break;
+                case UI.STATE_PAUSE:
+                    break;
+                case UI.STATE_END:
+                    break;
+            }
+
             spriteBatch.GraphicsDevice.SamplerStates[0] = SamplerState.PointClamp;
             base.Draw(gameTime);
         }
