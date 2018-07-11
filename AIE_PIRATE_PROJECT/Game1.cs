@@ -8,6 +8,7 @@ using MonoGame.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Media;
 
 namespace AIE_PIRATE_PROJECT
 {
@@ -22,6 +23,7 @@ namespace AIE_PIRATE_PROJECT
     /// </summary>
     public class Game1 : Game
     {
+        Song gameMusic;
         public static int tile = 64;
         public static float meter = tile;
         public static Vector2 maxVelocity = new Vector2(meter * 20f, meter * 20f);
@@ -113,6 +115,8 @@ namespace AIE_PIRATE_PROJECT
             health = Content.Load<Texture2D>("GUI/SkullHealth");
             goal = Content.Load<Texture2D>("Misc/chest");
             tiles = Content.Load<Texture2D>("Misc/tiles_sheet");
+            gameMusic = Content.Load<Song>("Thunderchild_theme");
+            MediaPlayer.Play(gameMusic);
 
             player = new Player(this);
 
