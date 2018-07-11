@@ -236,3 +236,9 @@
 /processorParam:Quality=Best
 /build:Thunderchild_theme.ogg
 
+#begin cannon.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:cannon.wav
+
